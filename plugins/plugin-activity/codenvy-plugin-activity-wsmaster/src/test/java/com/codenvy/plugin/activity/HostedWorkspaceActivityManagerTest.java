@@ -19,9 +19,9 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-import com.codenvy.resource.api.type.TimeoutResourceType;
-import com.codenvy.resource.api.usage.ResourceUsageManager;
-import com.codenvy.resource.spi.impl.ResourceImpl;
+import org.eclipse.che.multiuser.resource.api.type.TimeoutResourceType;
+import org.eclipse.che.multiuser.resource.api.usage.ResourceUsageManager;
+import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
 import java.lang.reflect.Field;
 import java.util.Map;
 import org.eclipse.che.account.api.AccountManager;

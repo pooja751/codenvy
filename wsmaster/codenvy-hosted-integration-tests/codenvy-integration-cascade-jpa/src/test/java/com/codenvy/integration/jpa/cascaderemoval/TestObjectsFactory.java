@@ -12,8 +12,6 @@ package com.codenvy.integration.jpa.cascaderemoval;
 
 import static java.util.Arrays.asList;
 
-import com.codenvy.resource.spi.impl.FreeResourcesLimitImpl;
-import com.codenvy.resource.spi.impl.ResourceImpl;
 import com.google.common.collect.ImmutableMap;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -34,6 +32,8 @@ import org.eclipse.che.api.workspace.server.model.impl.stack.StackImpl;
 import org.eclipse.che.api.workspace.server.model.impl.stack.StackSourceImpl;
 import org.eclipse.che.api.workspace.server.stack.image.StackIcon;
 import org.eclipse.che.multiuser.permission.workspace.server.model.impl.WorkerImpl;
+import org.eclipse.che.multiuser.resource.spi.impl.FreeResourcesLimitImpl;
+import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
 
 /**
  * Defines method for creating tests object instances.

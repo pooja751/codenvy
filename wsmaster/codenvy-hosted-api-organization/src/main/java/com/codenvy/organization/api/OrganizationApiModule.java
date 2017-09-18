@@ -24,10 +24,10 @@ import com.codenvy.organization.api.resource.OrganizationResourcesDistributionSe
 import com.codenvy.organization.api.resource.OrganizationalAccountAvailableResourcesProvider;
 import com.codenvy.organization.api.resource.SuborganizationResourcesProvider;
 import com.codenvy.organization.spi.impl.OrganizationImpl;
-import com.codenvy.resource.api.AvailableResourcesProvider;
-import com.codenvy.resource.api.ResourceLockKeyProvider;
-import com.codenvy.resource.api.free.DefaultResourcesProvider;
-import com.codenvy.resource.api.license.ResourcesProvider;
+import org.eclipse.che.multiuser.resource.api.AvailableResourcesProvider;
+import org.eclipse.che.multiuser.resource.api.ResourceLockKeyProvider;
+import org.eclipse.che.multiuser.resource.api.free.DefaultResourcesProvider;
+import org.eclipse.che.multiuser.resource.api.license.ResourcesProvider;
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.MapBinder;
 import com.google.inject.multibindings.Multibinder;

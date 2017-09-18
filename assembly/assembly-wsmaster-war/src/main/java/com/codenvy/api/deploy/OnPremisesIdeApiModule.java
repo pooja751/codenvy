@@ -43,7 +43,7 @@ import com.codenvy.machine.backup.EnvironmentBackupManager;
 import com.codenvy.organization.api.OrganizationApiModule;
 import com.codenvy.organization.api.OrganizationJpaModule;
 import com.codenvy.plugin.gitlab.factory.resolver.GitlabFactoryParametersResolver;
-import com.codenvy.resource.api.ResourceModule;
+import org.eclipse.che.multiuser.resource.api.ResourceModule;
 import com.codenvy.service.bitbucket.BitbucketConfigurationService;
 import com.codenvy.service.system.DockerBasedSystemRamInfoProvider;
 import com.codenvy.service.system.HostedSystemService;

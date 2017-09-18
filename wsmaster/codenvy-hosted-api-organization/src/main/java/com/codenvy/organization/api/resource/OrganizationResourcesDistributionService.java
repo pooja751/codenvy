@@ -17,8 +17,8 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import com.codenvy.organization.api.DtoConverter;
 import com.codenvy.organization.shared.dto.OrganizationDistributedResourcesDto;
 import com.codenvy.organization.shared.model.OrganizationDistributedResources;
-import com.codenvy.resource.api.free.ResourceValidator;
-import com.codenvy.resource.shared.dto.ResourceDto;
+import org.eclipse.che.multiuser.resource.api.free.ResourceValidator;
+import org.eclipse.che.multiuser.resource.shared.dto.ResourceDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -121,7 +121,7 @@ public class OrganizationResourcesDistributionService extends Service {
     return resourcesDistributor
         .getResourcesCaps(suborganization)
         .stream()
-        .map(com.codenvy.resource.api.DtoConverter::asDto)
+        .map(org.eclipse.che.multiuser.resource.api.DtoConverter::asDto)
         .collect(toList());
   }
 

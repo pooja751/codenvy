@@ -13,7 +13,7 @@ package com.codenvy.organization.api.resource;
 import com.codenvy.organization.api.OrganizationManager;
 import com.codenvy.organization.shared.model.Organization;
 import com.codenvy.organization.spi.impl.OrganizationImpl;
-import com.codenvy.resource.api.ResourceLockKeyProvider;
+import org.eclipse.che.multiuser.resource.api.ResourceLockKeyProvider;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import org.eclipse.che.api.core.NotFoundException;

@@ -23,8 +23,8 @@
     <name>Codenvy :: Hosted :: Personal account</name>
     <dependencies>
         <dependency>
-            <groupId>com.codenvy.onpremises.wsmaster</groupId>
-            <artifactId>codenvy-hosted-api-resource</artifactId>
+            <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-api-resource</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.inject</groupId>

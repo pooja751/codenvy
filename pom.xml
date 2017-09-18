@@ -295,27 +295,6 @@
             </dependency>
             <dependency>
                 <groupId>com.codenvy.onpremises.wsmaster</groupId>
-                <artifactId>codenvy-hosted-api-permission</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.codenvy.onpremises.wsmaster</groupId>
-                <artifactId>codenvy-hosted-api-resource</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.codenvy.onpremises.wsmaster</groupId>
-                <artifactId>codenvy-hosted-api-resource</artifactId>
-                <version>${project.version}</version>
-                <classifier>tests</classifier>
-            </dependency>
-            <dependency>
-                <groupId>com.codenvy.onpremises.wsmaster</groupId>
-                <artifactId>codenvy-hosted-api-resource-shared</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.codenvy.onpremises.wsmaster</groupId>
                 <artifactId>codenvy-hosted-api-subscription</artifactId>
                 <version>${project.version}</version>
             </dependency>

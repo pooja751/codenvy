@@ -11,8 +11,8 @@
 package com.codenvy.organization.spi.impl;
 
 import com.codenvy.organization.shared.model.OrganizationDistributedResources;
-import com.codenvy.resource.model.Resource;
-import com.codenvy.resource.spi.impl.ResourceImpl;
+import org.eclipse.che.multiuser.resource.model.Resource;
+import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

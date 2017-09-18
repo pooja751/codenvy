@@ -17,7 +17,7 @@ import static org.testng.Assert.assertTrue;
 import com.codenvy.organization.spi.OrganizationDistributedResourcesDao;
 import com.codenvy.organization.spi.impl.OrganizationDistributedResourcesImpl;
 import com.codenvy.organization.spi.impl.OrganizationImpl;
-import com.codenvy.resource.spi.impl.ResourceImpl;
+import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
 import java.util.Arrays;
 import java.util.Collections;
 import javax.inject.Inject;

@@ -51,7 +51,7 @@ public final class DtoConverter {
             distributedResources
                 .getResourcesCap()
                 .stream()
-                .map(com.codenvy.resource.api.DtoConverter::asDto)
+                .map(org.eclipse.che.multiuser.resource.api.DtoConverter::asDto)
                 .collect(Collectors.toList()));
   }
 

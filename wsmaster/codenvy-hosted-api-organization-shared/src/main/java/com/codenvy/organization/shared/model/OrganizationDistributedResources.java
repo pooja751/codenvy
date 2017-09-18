@@ -10,7 +10,7 @@
  */
 package com.codenvy.organization.shared.model;
 
-import com.codenvy.resource.model.Resource;
+import org.eclipse.che.multiuser.resource.model.Resource;
 import java.util.List;
 
 /**

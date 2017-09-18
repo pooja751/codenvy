@@ -12,12 +12,12 @@ package com.codenvy.api.account.personal;
 
 import static java.util.Arrays.asList;
 
-import com.codenvy.resource.api.free.DefaultResourcesProvider;
-import com.codenvy.resource.api.type.RamResourceType;
-import com.codenvy.resource.api.type.RuntimeResourceType;
-import com.codenvy.resource.api.type.TimeoutResourceType;
-import com.codenvy.resource.api.type.WorkspaceResourceType;
-import com.codenvy.resource.spi.impl.ResourceImpl;
+import org.eclipse.che.multiuser.resource.api.free.DefaultResourcesProvider;
+import org.eclipse.che.multiuser.resource.api.type.RamResourceType;
+import org.eclipse.che.multiuser.resource.api.type.RuntimeResourceType;
+import org.eclipse.che.multiuser.resource.api.type.TimeoutResourceType;
+import org.eclipse.che.multiuser.resource.api.type.WorkspaceResourceType;
+import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;

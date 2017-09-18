@@ -12,11 +12,11 @@ package com.codenvy.organization.api.resource;
 
 import com.codenvy.organization.api.OrganizationManager;
 import com.codenvy.organization.shared.model.Organization;
-import com.codenvy.resource.api.AvailableResourcesProvider;
-import com.codenvy.resource.api.ResourceAggregator;
-import com.codenvy.resource.api.exception.NoEnoughResourcesException;
-import com.codenvy.resource.api.usage.ResourceUsageManager;
-import com.codenvy.resource.model.Resource;
+import org.eclipse.che.multiuser.resource.api.AvailableResourcesProvider;
+import org.eclipse.che.multiuser.resource.api.ResourceAggregator;
+import org.eclipse.che.multiuser.resource.api.exception.NoEnoughResourcesException;
+import org.eclipse.che.multiuser.resource.api.usage.ResourceUsageManager;
+import org.eclipse.che.multiuser.resource.model.Resource;
 import com.google.common.annotations.VisibleForTesting;
 import java.util.ArrayList;
 import java.util.Collection;

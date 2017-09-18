@@ -16,12 +16,12 @@ import static java.util.stream.Collectors.toMap;
 
 import com.codenvy.organization.api.OrganizationManager;
 import com.codenvy.organization.spi.impl.OrganizationImpl;
-import com.codenvy.resource.api.license.ResourcesProvider;
-import com.codenvy.resource.api.usage.ResourceUsageManager;
-import com.codenvy.resource.model.ProvidedResources;
-import com.codenvy.resource.model.Resource;
-import com.codenvy.resource.spi.impl.ProvidedResourcesImpl;
-import com.codenvy.resource.spi.impl.ResourceImpl;
+import org.eclipse.che.multiuser.resource.api.license.ResourcesProvider;
+import org.eclipse.che.multiuser.resource.api.usage.ResourceUsageManager;
+import org.eclipse.che.multiuser.resource.model.ProvidedResources;
+import org.eclipse.che.multiuser.resource.model.Resource;
+import org.eclipse.che.multiuser.resource.spi.impl.ProvidedResourcesImpl;
+import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;

@@ -30,7 +30,7 @@ import static org.testng.Assert.assertTrue;
 import com.codenvy.organization.api.OrganizationManager;
 import com.codenvy.organization.api.resource.OrganizationResourcesDistributionService;
 import com.codenvy.organization.spi.impl.OrganizationImpl;
-import com.codenvy.resource.shared.dto.ResourceDto;
+import org.eclipse.che.multiuser.resource.shared.dto.ResourceDto;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Collections;

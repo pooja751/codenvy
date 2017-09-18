@@ -18,11 +18,11 @@ import static org.testng.Assert.assertTrue;
 
 import com.codenvy.organization.api.OrganizationManager;
 import com.codenvy.organization.shared.model.Organization;
-import com.codenvy.resource.api.type.RamResourceType;
-import com.codenvy.resource.api.type.RuntimeResourceType;
-import com.codenvy.resource.api.type.TimeoutResourceType;
-import com.codenvy.resource.api.type.WorkspaceResourceType;
-import com.codenvy.resource.spi.impl.ResourceImpl;
+import org.eclipse.che.multiuser.resource.api.type.RamResourceType;
+import org.eclipse.che.multiuser.resource.api.type.RuntimeResourceType;
+import org.eclipse.che.multiuser.resource.api.type.TimeoutResourceType;
+import org.eclipse.che.multiuser.resource.api.type.WorkspaceResourceType;
+import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
 import java.util.List;
 import org.mockito.Mock;
 import org.mockito.testng.MockitoTestNGListener;

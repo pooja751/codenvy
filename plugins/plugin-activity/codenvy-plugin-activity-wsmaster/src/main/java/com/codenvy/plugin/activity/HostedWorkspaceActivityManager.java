@@ -10,9 +10,9 @@
  */
 package com.codenvy.plugin.activity;
 
-import com.codenvy.resource.api.type.TimeoutResourceType;
-import com.codenvy.resource.api.usage.ResourceUsageManager;
-import com.codenvy.resource.model.Resource;
+import org.eclipse.che.multiuser.resource.api.type.TimeoutResourceType;
+import org.eclipse.che.multiuser.resource.api.usage.ResourceUsageManager;
+import org.eclipse.che.multiuser.resource.model.Resource;
 import com.google.inject.Inject;
 import java.util.List;
 import java.util.Optional;

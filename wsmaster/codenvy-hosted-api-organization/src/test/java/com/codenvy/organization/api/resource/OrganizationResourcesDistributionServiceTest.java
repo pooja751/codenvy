@@ -24,8 +24,8 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import com.codenvy.organization.shared.dto.OrganizationDistributedResourcesDto;
-import com.codenvy.resource.api.free.ResourceValidator;
-import com.codenvy.resource.shared.dto.ResourceDto;
+import org.eclipse.che.multiuser.resource.api.free.ResourceValidator;
+import org.eclipse.che.multiuser.resource.shared.dto.ResourceDto;
 import com.jayway.restassured.response.Response;
 import java.util.Arrays;
 import java.util.HashSet;

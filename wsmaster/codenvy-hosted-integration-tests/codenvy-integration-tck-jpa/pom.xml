@@ -48,15 +48,6 @@
             <artifactId>codenvy-hosted-api-organization-shared</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.codenvy.onpremises.wsmaster</groupId>
-            <artifactId>codenvy-hosted-api-resource</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.onpremises.wsmaster</groupId>
-            <artifactId>codenvy-hosted-api-resource</artifactId>
-            <classifier>tests</classifier>
-        </dependency>
-        <dependency>
             <groupId>org.eclipse.che.core</groupId>
             <artifactId>che-core-api-account</artifactId>
         </dependency>
@@ -86,6 +77,15 @@
         <dependency>
             <groupId>org.eclipse.che.multiuser</groupId>
             <artifactId>che-multiuser-api-permission</artifactId>
+            <classifier>tests</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-api-resource</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-api-resource</artifactId>
             <classifier>tests</classifier>
         </dependency>
         <dependency>
@@ -235,13 +235,15 @@
                                 </goals>
                                 <configuration>
                                     <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
-                                    <includeArtifactIds>codenvy-hosted-api-machine,
+                                    <includeArtifactIds>che-core-api-factory,
+                                        che-multiuser-api-resource,
+                                        che-multiuser-api-permission,
+                                        che-multiuser-permission-machine,
+                                        che-multiuser-permission-workspace,
+                                        codenvy-hosted-api-machine,
                     codenvy-hosted-api-workspace,
                     codenvy-hosted-api-organization,
-                    codenvy-hosted-api-resource,
-                    codenvy-hosted-api-permission,
-                    codenvy-hosted-api-invite,
-                    che-core-api-factory</includeArtifactIds>
+                    codenvy-hosted-api-invite</includeArtifactIds>
                                     <includeScope>test</includeScope>
                                 </configuration>
                             </execution>

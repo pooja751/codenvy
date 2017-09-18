@@ -11,7 +11,7 @@
 package com.codenvy.organization.shared.dto;
 
 import com.codenvy.organization.shared.model.OrganizationDistributedResources;
-import com.codenvy.resource.shared.dto.ResourceDto;
+import org.eclipse.che.multiuser.resource.shared.dto.ResourceDto;
 import java.util.List;
 import org.eclipse.che.dto.shared.DTO;
 
