@@ -186,6 +186,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-sql-schema</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.everrest</groupId>
             <artifactId>everrest-assured</artifactId>
             <scope>test</scope>
@@ -335,6 +340,7 @@
                         </goals>
                         <configuration>
                             <includeArtifactIds>che-core-sql-schema,
+                                che-multiuser-sql-schema,
                                 codenvy-sql-schema</includeArtifactIds>
                             <includes>che-schema/,codenvy-schema/</includes>
                             <outputDirectory>${project.build.directory}</outputDirectory>

@@ -177,6 +177,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-sql-schema</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
             <scope>test</scope>
@@ -248,7 +253,8 @@
                                 </goals>
                                 <configuration>
                                     <includeArtifactIds>che-core-sql-schema,
-                    codenvy-sql-schema</includeArtifactIds>
+                                        che-multiuser-sql-schema,
+                                        codenvy-sql-schema</includeArtifactIds>
                                     <includes>che-schema/,codenvy-schema/</includes>
                                     <outputDirectory>${project.build.directory}</outputDirectory>
                                 </configuration>

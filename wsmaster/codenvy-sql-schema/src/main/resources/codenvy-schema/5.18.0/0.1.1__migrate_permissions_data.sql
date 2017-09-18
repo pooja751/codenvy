@@ -14,55 +14,56 @@
 --
 
 -- System permissions migration --------------------------------------------------
-INSERT INTO che_systempermissions(id, userid)
-SELECT                            id, userid
+INSERT INTO che_system_permissions(id, user_id)
+SELECT                             id, userid
 FROM systempermissions;
-----------------------------------------------------------------------------------
 
--- System permissions actions migration ------------------------------------------
-INSERT INTO che_systempermissions_actions (systempermissions_id, actions)
-SELECT                                     systempermissions_id, actions
+INSERT INTO che_system_permissions_actions (system_permissions_id, actions)
+SELECT                                      systempermissions_id,  actions
 FROM systempermissions_actions;
+
+DROP TABLE systempermissions_actions;
+DROP TABLE systempermissions;
 ----------------------------------------------------------------------------------
 
 
 -- Workers migration -------------------------------------------------------------
-INSERT INTO che_worker(id, userid, workspaceid)
-SELECT                 id, userid, workspaceid
+INSERT INTO che_worker(id, user_id, workspace_id)
+SELECT                 id, userid,  workspaceid
 FROM worker;
-----------------------------------------------------------------------------------
 
-
--- Worker actions migration ------------------------------------------------------
 INSERT INTO che_worker_actions (worker_id, actions)
 SELECT                          worker_id, actions
 FROM worker_actions;
+
+DROP TABLE worker_actions;
+DROP TABLE worker;
 ----------------------------------------------------------------------------------
 
 
 -- Stack permissions migration ---------------------------------------------------
-INSERT INTO che_stackpermissions(id, stackid, userid)
-SELECT                           id, stackid, userid
+INSERT INTO che_stack_permissions(id, stack_id, user_id)
+SELECT                            id, stackid,  userid
 FROM stackpermissions;
-----------------------------------------------------------------------------------
 
-
--- Stack permission actions migration --------------------------------------------
-INSERT INTO che_stackpermissions_actions (stackpermissions_id, actions)
-SELECT                                    stackpermissions_id, actions
+INSERT INTO che_stack_permissions_actions (stack_permissions_id, actions)
+SELECT                                     stackpermissions_id,  actions
 FROM stackpermissions_actions;
+
+DROP TABLE stackpermissions_actions;
+DROP TABLE stackpermissions;
 ----------------------------------------------------------------------------------
 
 
 -- Recipe permissions migration --------------------------------------------------
-INSERT INTO che_recipepermissions(id, recipeid, userid)
-SELECT                            id, recipeid, userid
+INSERT INTO che_recipe_permissions(id, recipe_id, user_id)
+SELECT                            id,  recipeid,  userid
 FROM recipepermissions;
-----------------------------------------------------------------------------------
 
-
--- Recipe permission actions migration -------------------------------------------
-INSERT INTO che_recipepermissions_actions (recipepermissions_id, actions)
-SELECT                                     recipepermissions_id, actions
+INSERT INTO che_recipe_permissions_actions (recipe_permissions_id, actions)
+SELECT                                      recipepermissions_id, actions
 FROM recipepermissions_actions;
+
+DROP TABLE recipepermissions_actions;
+DROP TABLE recipepermissions;
 ----------------------------------------------------------------------------------
