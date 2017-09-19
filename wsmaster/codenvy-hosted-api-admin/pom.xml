@@ -199,14 +199,6 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>analyze</id>
-                        <configuration>
-                            <ignoredDependencies>
-                                <ignoreDependenvy>com.codenvy.onpremises.wsmaster:codenvy-hosted-api-permission</ignoreDependenvy>
-                            </ignoredDependencies>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>resource-dependencies</id>
                         <phase>process-test-resources</phase>
                         <goals>

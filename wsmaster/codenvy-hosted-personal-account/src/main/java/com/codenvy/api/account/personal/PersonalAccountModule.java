@@ -10,11 +10,11 @@
  */
 package com.codenvy.api.account.personal;
 
-import org.eclipse.che.multiuser.resource.api.free.DefaultResourcesProvider;
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
 import org.eclipse.che.inject.DynaModule;
 import org.eclipse.che.multiuser.api.permission.server.account.AccountPermissionsChecker;
+import org.eclipse.che.multiuser.resource.api.free.DefaultResourcesProvider;
 
 /** @author Sergii Leschenko */
 @DynaModule

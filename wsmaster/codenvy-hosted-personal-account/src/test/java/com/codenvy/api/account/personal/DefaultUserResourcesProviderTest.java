@@ -13,13 +13,13 @@ package com.codenvy.api.account.personal;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+import java.util.List;
+import org.eclipse.che.api.user.server.UserManager;
 import org.eclipse.che.multiuser.resource.api.type.RamResourceType;
 import org.eclipse.che.multiuser.resource.api.type.RuntimeResourceType;
 import org.eclipse.che.multiuser.resource.api.type.TimeoutResourceType;
 import org.eclipse.che.multiuser.resource.api.type.WorkspaceResourceType;
 import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
-import java.util.List;
-import org.eclipse.che.api.user.server.UserManager;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

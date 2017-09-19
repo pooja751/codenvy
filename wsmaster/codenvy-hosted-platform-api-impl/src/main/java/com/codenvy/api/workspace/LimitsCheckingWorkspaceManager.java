@@ -15,15 +15,6 @@ import static java.lang.String.format;
 import static java.lang.Thread.currentThread;
 import static java.util.Collections.singletonList;
 
-import org.eclipse.che.multiuser.resource.api.exception.NoEnoughResourcesException;
-import org.eclipse.che.multiuser.resource.api.type.RamResourceType;
-import org.eclipse.che.multiuser.resource.api.type.RuntimeResourceType;
-import org.eclipse.che.multiuser.resource.api.type.WorkspaceResourceType;
-import org.eclipse.che.multiuser.resource.api.usage.ResourceUsageManager;
-import org.eclipse.che.multiuser.resource.api.usage.ResourcesLocks;
-import org.eclipse.che.multiuser.resource.api.usage.tracker.EnvironmentRamCalculator;
-import org.eclipse.che.multiuser.resource.model.Resource;
-import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
 import com.codenvy.service.system.SystemRamInfoProvider;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
@@ -51,6 +42,15 @@ import org.eclipse.che.api.workspace.server.spi.WorkspaceDao;
 import org.eclipse.che.commons.annotation.Nullable;
 import org.eclipse.che.commons.lang.Size;
 import org.eclipse.che.commons.lang.concurrent.Unlocker;
+import org.eclipse.che.multiuser.resource.api.exception.NoEnoughResourcesException;
+import org.eclipse.che.multiuser.resource.api.type.RamResourceType;
+import org.eclipse.che.multiuser.resource.api.type.RuntimeResourceType;
+import org.eclipse.che.multiuser.resource.api.type.WorkspaceResourceType;
+import org.eclipse.che.multiuser.resource.api.usage.ResourceUsageManager;
+import org.eclipse.che.multiuser.resource.api.usage.ResourcesLocks;
+import org.eclipse.che.multiuser.resource.api.usage.tracker.EnvironmentRamCalculator;
+import org.eclipse.che.multiuser.resource.model.Resource;
+import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
 
 /**
  * Manager that checks limits and delegates all its operations to the {@link WorkspaceManager}.

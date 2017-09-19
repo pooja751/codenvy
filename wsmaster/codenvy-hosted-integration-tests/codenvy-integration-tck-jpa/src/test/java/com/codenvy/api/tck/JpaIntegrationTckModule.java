@@ -17,16 +17,6 @@ import static org.eclipse.persistence.config.PersistenceUnitProperties.JDBC_USER
 import static org.eclipse.persistence.config.PersistenceUnitProperties.TRANSACTION_TYPE;
 
 import com.codenvy.api.invite.InviteImpl;
-import com.codenvy.organization.api.permissions.OrganizationDomain;
-import com.codenvy.organization.spi.MemberDao;
-import com.codenvy.organization.spi.OrganizationDao;
-import com.codenvy.organization.spi.OrganizationDistributedResourcesDao;
-import com.codenvy.organization.spi.impl.MemberImpl;
-import com.codenvy.organization.spi.impl.OrganizationDistributedResourcesImpl;
-import com.codenvy.organization.spi.impl.OrganizationImpl;
-import com.codenvy.organization.spi.jpa.JpaMemberDao;
-import com.codenvy.organization.spi.jpa.JpaOrganizationDao;
-import com.codenvy.organization.spi.jpa.JpaOrganizationDistributedResourcesDao;
 import com.codenvy.spi.invite.InviteDao;
 import com.codenvy.spi.invite.jpa.JpaInviteDao;
 import com.google.inject.Singleton;
@@ -100,6 +90,16 @@ import org.eclipse.che.multiuser.api.permission.server.jpa.JpaSystemPermissionsD
 import org.eclipse.che.multiuser.api.permission.server.model.impl.SystemPermissionsImpl;
 import org.eclipse.che.multiuser.api.permission.server.spi.PermissionsDao;
 import org.eclipse.che.multiuser.api.permission.server.spi.tck.SystemPermissionsDaoTest;
+import org.eclipse.che.multiuser.organization.api.permissions.OrganizationDomain;
+import org.eclipse.che.multiuser.organization.spi.MemberDao;
+import org.eclipse.che.multiuser.organization.spi.OrganizationDao;
+import org.eclipse.che.multiuser.organization.spi.OrganizationDistributedResourcesDao;
+import org.eclipse.che.multiuser.organization.spi.impl.MemberImpl;
+import org.eclipse.che.multiuser.organization.spi.impl.OrganizationDistributedResourcesImpl;
+import org.eclipse.che.multiuser.organization.spi.impl.OrganizationImpl;
+import org.eclipse.che.multiuser.organization.spi.jpa.JpaMemberDao;
+import org.eclipse.che.multiuser.organization.spi.jpa.JpaOrganizationDao;
+import org.eclipse.che.multiuser.organization.spi.jpa.JpaOrganizationDistributedResourcesDao;
 import org.eclipse.che.multiuser.permission.machine.jpa.JpaRecipePermissionsDao;
 import org.eclipse.che.multiuser.permission.machine.recipe.RecipePermissionsImpl;
 import org.eclipse.che.multiuser.permission.machine.spi.tck.RecipePermissionsDaoTest;

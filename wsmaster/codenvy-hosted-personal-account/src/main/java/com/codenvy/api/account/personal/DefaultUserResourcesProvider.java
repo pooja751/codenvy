@@ -12,12 +12,6 @@ package com.codenvy.api.account.personal;
 
 import static java.util.Arrays.asList;
 
-import org.eclipse.che.multiuser.resource.api.free.DefaultResourcesProvider;
-import org.eclipse.che.multiuser.resource.api.type.RamResourceType;
-import org.eclipse.che.multiuser.resource.api.type.RuntimeResourceType;
-import org.eclipse.che.multiuser.resource.api.type.TimeoutResourceType;
-import org.eclipse.che.multiuser.resource.api.type.WorkspaceResourceType;
-import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
@@ -27,6 +21,12 @@ import org.eclipse.che.api.core.NotFoundException;
 import org.eclipse.che.api.core.ServerException;
 import org.eclipse.che.api.user.server.UserManager;
 import org.eclipse.che.commons.lang.Size;
+import org.eclipse.che.multiuser.resource.api.free.DefaultResourcesProvider;
+import org.eclipse.che.multiuser.resource.api.type.RamResourceType;
+import org.eclipse.che.multiuser.resource.api.type.RuntimeResourceType;
+import org.eclipse.che.multiuser.resource.api.type.TimeoutResourceType;
+import org.eclipse.che.multiuser.resource.api.type.WorkspaceResourceType;
+import org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl;
 
 /**
  * Provided free resources that are available for usage by personal accounts by default.
