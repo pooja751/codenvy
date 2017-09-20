@@ -55,9 +55,9 @@
         <class>org.eclipse.che.multiuser.permission.machine.recipe.RecipePermissionsImpl</class>
         <class>org.eclipse.che.api.ssh.server.model.impl.SshPairImpl</class>
 
-        <class>com.codenvy.organization.spi.impl.OrganizationImpl</class>
-        <class>com.codenvy.organization.spi.impl.MemberImpl</class>
-        <class>com.codenvy.organization.spi.impl.OrganizationDistributedResourcesImpl</class>
+        <class>org.eclipse.che.multiuser.organization.spi.impl.OrganizationImpl</class>
+        <class>org.eclipse.che.multiuser.organization.spi.impl.MemberImpl</class>
+        <class>org.eclipse.che.multiuser.organization.spi.impl.OrganizationDistributedResourcesImpl</class>
 
         <class>org.eclipse.che.multiuser.resource.spi.impl.ResourceImpl</class>
         <class>org.eclipse.che.multiuser.resource.spi.impl.FreeResourcesLimitImpl</class>

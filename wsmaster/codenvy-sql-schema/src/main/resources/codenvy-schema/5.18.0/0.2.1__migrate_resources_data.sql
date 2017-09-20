@@ -13,6 +13,7 @@
 -- from Codenvy S.A..
 --
 
+--TODO Revise and drop table because of using resources for organization resources storing
 INSERT INTO che_resource(id, amount, type, unit)
 SELECT                   id, amount, type, unit
 FROM resource;
@@ -27,8 +28,3 @@ FROM freeresourceslimit_resource;
 
 DROP TABLE freeresourceslimit_resource;
 DROP TABLE freeresourceslimit;
-
---TODO Revise
---DROP TABLE resource;
-
---

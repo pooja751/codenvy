@@ -20,6 +20,7 @@ import com.codenvy.api.audit.server.AuditServicePermissionsFilter;
 import com.codenvy.api.dao.authentication.AuthenticationDaoInterceptor;
 import com.codenvy.api.dao.authentication.PassportValidator;
 import com.codenvy.api.user.server.AdminUserService;
+import com.codenvy.api.workspace.SystemRamCheckingWorkspaceManager;
 import com.codenvy.auth.aws.ecr.AwsEcrAuthResolver;
 import com.codenvy.auth.sso.client.OnPremisesMachineSessionInvalidator;
 import com.codenvy.auth.sso.client.ServerClient;
@@ -255,7 +256,7 @@ public class OnPremisesIdeApiModule extends AbstractModule {
 
     bind(WorkspaceValidator.class)
         .to(org.eclipse.che.api.workspace.server.DefaultWorkspaceValidator.class);
-    bind(WorkspaceManager.class).to(com.codenvy.api.workspace.LimitsCheckingWorkspaceManager.class);
+    bind(WorkspaceManager.class).to(SystemRamCheckingWorkspaceManager.class);
     bind(org.eclipse.che.api.workspace.server.TemporaryWorkspaceRemover.class);
     bind(WorkspaceMessenger.class).asEagerSingleton();
 
