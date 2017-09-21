@@ -51,8 +51,7 @@ public class SystemRamCheckingWorkspaceManager extends LimitsCheckingWorkspaceMa
 
   private final SystemRamInfoProvider systemRamInfoProvider;
 
-  @VisibleForTesting
-  Semaphore startSemaphore;
+  @VisibleForTesting Semaphore startSemaphore;
 
   @Inject
   public SystemRamCheckingWorkspaceManager(
@@ -65,7 +64,7 @@ public class SystemRamCheckingWorkspaceManager extends LimitsCheckingWorkspaceMa
       SnapshotDao snapshotDao,
       WorkspaceSharedPool sharedPool,
       //own injects
-      @Named("limits.workspace.env.ram") String maxRamPerEnv,
+      @Named("che.limits.workspace.env.ram") String maxRamPerEnv,
       @Named("limits.workspace.start.throughput") int maxSameTimeStartWSRequests,
       SystemRamInfoProvider systemRamInfoProvider,
       EnvironmentRamCalculator environmentRamCalculator,

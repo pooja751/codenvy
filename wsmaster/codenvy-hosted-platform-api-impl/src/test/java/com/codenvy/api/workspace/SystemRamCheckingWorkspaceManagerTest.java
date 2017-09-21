@@ -52,21 +52,16 @@ public class SystemRamCheckingWorkspaceManagerTest {
 
   public static final String NAMESPACE = "namespace";
   public static final String ACCOUNT_ID = "accountId";
-  @Mock
-  private WorkspaceDao workspaceDao;
-  @Mock
-  private SystemRamInfoProvider systemRamInfoProvider;
-  @Mock
-  private EnvironmentRamCalculator environmentRamCalculator;
-  @Mock
-  private Account account;
-  @Mock
-  private ResourceUsageManager resourceUsageManager;
+  @Mock private WorkspaceDao workspaceDao;
+  @Mock private SystemRamInfoProvider systemRamInfoProvider;
+  @Mock private EnvironmentRamCalculator environmentRamCalculator;
+  @Mock private Account account;
+  @Mock private ResourceUsageManager resourceUsageManager;
 
   @Test(
-      expectedExceptions = LimitExceededException.class,
-      expectedExceptionsMessageRegExp =
-          "Low RAM. Your workspace cannot be started until the system has more RAM available."
+    expectedExceptions = LimitExceededException.class,
+    expectedExceptionsMessageRegExp =
+        "Low RAM. Your workspace cannot be started until the system has more RAM available."
   )
   public void shouldNotBeAbleToStartNewWorkspaceIfSystemRamLimitIsExceeded() throws Exception {
     when(systemRamInfoProvider.getSystemRamInfo())
@@ -87,7 +82,6 @@ public class SystemRamCheckingWorkspaceManagerTest {
     verify(callback).call();
   }
 
-
   @Test
   public void shouldAcquireAndReleaseSemaphoreIfThroughputPropertyIsMoreThanZero()
       throws Exception {
@@ -104,8 +98,8 @@ public class SystemRamCheckingWorkspaceManagerTest {
 
   @Test(expectedExceptions = Exception.class)
   public void
-  shouldAcquireAndReleaseSemaphoreIfThroughputPropertyIsMoreThanZeroAndExceptionHappened()
-      throws Exception {
+      shouldAcquireAndReleaseSemaphoreIfThroughputPropertyIsMoreThanZeroAndExceptionHappened()
+          throws Exception {
     final SystemRamCheckingWorkspaceManager manager = managerBuilder().build();
     Semaphore semaphore = mock(Semaphore.class);
     WorkspaceCallback callback = mock(WorkspaceCallback.class);
@@ -152,11 +146,11 @@ public class SystemRamCheckingWorkspaceManagerTest {
     final CountDownLatch invokeProcessLatch = new CountDownLatch(6);
     //Pause 5 threads after they will acquire all permits to check RAM.
     doAnswer(
-        invocationOnMock -> {
-          invokeProcessLatch.countDown();
-          invokeProcessLatch.await();
-          return null;
-        })
+            invocationOnMock -> {
+              invokeProcessLatch.countDown();
+              invokeProcessLatch.await();
+              return null;
+            })
         .when(manager)
         .checkSystemRamLimitAndPropagateStart(anyObject());
     Runnable runnable =

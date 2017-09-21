@@ -123,10 +123,6 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.che.multiuser</groupId>
-            <artifactId>che-multiuser-api-organization</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.che.multiuser</groupId>
             <artifactId>che-multiuser-api-permission</artifactId>
         </dependency>
         <dependency>
@@ -328,14 +324,10 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- compiler inlines constants, so it is impossible to find reference on dependency -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
-                    <execution>
-                        <id>analyze</id>
-                    </execution>
                     <execution>
                         <id>resource-dependencies</id>
                         <phase>process-test-resources</phase>

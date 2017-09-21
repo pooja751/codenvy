@@ -71,10 +71,6 @@
             <artifactId>codenvy-hosted-events</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.che.multiuser</groupId>
-            <artifactId>che-multiuser-personal-account</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.codenvy.onpremises.wsmaster</groupId>
             <artifactId>codenvy-hosted-platform-api-impl</artifactId>
         </dependency>
@@ -304,6 +300,10 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-personal-account</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
             <artifactId>che-multiuser-sql-schema</artifactId>
         </dependency>
         <dependency>
@@ -419,6 +419,10 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-permission-resource</artifactId>
         </dependency>
     </dependencies>
     <build>

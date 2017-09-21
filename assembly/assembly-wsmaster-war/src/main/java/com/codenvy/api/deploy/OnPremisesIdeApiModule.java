@@ -42,7 +42,6 @@ import com.codenvy.machine.agent.WorkspaceInfrastructureModule;
 import com.codenvy.machine.backup.DockerEnvironmentBackupManager;
 import com.codenvy.machine.backup.EnvironmentBackupManager;
 import com.codenvy.plugin.gitlab.factory.resolver.GitlabFactoryParametersResolver;
-import org.eclipse.che.multiuser.resource.api.ResourceModule;
 import com.codenvy.service.bitbucket.BitbucketConfigurationService;
 import com.codenvy.service.system.DockerBasedSystemRamInfoProvider;
 import com.codenvy.service.system.HostedSystemService;
@@ -129,6 +128,7 @@ import org.eclipse.che.multiuser.permission.machine.jpa.MultiuserMachineJpaModul
 import org.eclipse.che.multiuser.permission.system.SystemServicePermissionsFilter;
 import org.eclipse.che.multiuser.permission.workspace.server.jpa.MultiuserWorkspaceJpaModule;
 import org.eclipse.che.multiuser.resource.api.ResourceModule;
+import org.eclipse.che.multiuser.resource.api.workspace.LimitsCheckingWorkspaceManager;
 import org.eclipse.che.plugin.github.factory.resolver.GithubFactoryParametersResolver;
 import org.eclipse.che.security.oauth.OAuthAuthenticatorProvider;
 import org.eclipse.che.security.oauth.OAuthAuthenticatorProviderImpl;
@@ -256,9 +256,20 @@ public class OnPremisesIdeApiModule extends AbstractModule {
 
     bind(WorkspaceValidator.class)
         .to(org.eclipse.che.api.workspace.server.DefaultWorkspaceValidator.class);
-    bind(WorkspaceManager.class).to(SystemRamCheckingWorkspaceManager.class);
+    bind(LimitsCheckingWorkspaceManager.class).to(SystemRamCheckingWorkspaceManager.class);
     bind(org.eclipse.che.api.workspace.server.TemporaryWorkspaceRemover.class);
     bind(WorkspaceMessenger.class).asEagerSingleton();
+
+    //Permission filters
+    bind(org.eclipse.che.multiuser.permission.user.UserProfileServicePermissionsFilter.class);
+    bind(org.eclipse.che.multiuser.permission.user.UserServicePermissionsFilter.class);
+    bind(org.eclipse.che.plugin.activity.ActivityPermissionsFilter.class);
+    bind(
+        org.eclipse.che.multiuser.permission.resource.filters.ResourceUsageServicePermissionsFilter
+            .class);
+    bind(
+        org.eclipse.che.multiuser.permission.resource.filters
+            .FreeResourcesLimitServicePermissionsFilter.class);
 
     bind(com.codenvy.service.password.PasswordService.class);
 
