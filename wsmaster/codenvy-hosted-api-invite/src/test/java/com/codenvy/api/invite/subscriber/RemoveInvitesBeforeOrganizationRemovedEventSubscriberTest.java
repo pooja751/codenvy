@@ -21,11 +21,11 @@ import static org.mockito.Mockito.verify;
 
 import com.codenvy.api.invite.InviteImpl;
 import com.codenvy.api.invite.InviteManager;
-import com.codenvy.organization.api.event.BeforeOrganizationRemovedEvent;
-import com.codenvy.organization.api.permissions.OrganizationDomain;
-import com.codenvy.organization.spi.impl.OrganizationImpl;
 import org.eclipse.che.api.core.Page;
 import org.eclipse.che.api.core.notification.EventService;
+import org.eclipse.che.multiuser.organization.api.event.BeforeOrganizationRemovedEvent;
+import org.eclipse.che.multiuser.organization.api.permissions.OrganizationDomain;
+import org.eclipse.che.multiuser.organization.spi.impl.OrganizationImpl;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.testng.MockitoTestNGListener;

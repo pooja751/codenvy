@@ -25,7 +25,6 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 import com.codenvy.api.invite.event.InviteCreatedEvent;
-import com.codenvy.organization.api.permissions.OrganizationDomain;
 import com.codenvy.shared.invite.dto.InviteDto;
 import com.codenvy.shared.invite.model.Invite;
 import com.codenvy.spi.invite.InviteDao;
@@ -37,6 +36,7 @@ import org.eclipse.che.api.core.notification.EventService;
 import org.eclipse.che.api.user.server.UserManager;
 import org.eclipse.che.dto.server.DtoFactory;
 import org.eclipse.che.multiuser.api.permission.server.PermissionsManager;
+import org.eclipse.che.multiuser.organization.api.permissions.OrganizationDomain;
 import org.eclipse.che.multiuser.permission.workspace.server.WorkspaceDomain;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

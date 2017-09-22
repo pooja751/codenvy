@@ -20,6 +20,7 @@ import com.codenvy.api.audit.server.AuditServicePermissionsFilter;
 import com.codenvy.api.dao.authentication.AuthenticationDaoInterceptor;
 import com.codenvy.api.dao.authentication.PassportValidator;
 import com.codenvy.api.user.server.AdminUserService;
+import com.codenvy.api.workspace.SystemRamCheckingWorkspaceManager;
 import com.codenvy.auth.aws.ecr.AwsEcrAuthResolver;
 import com.codenvy.auth.sso.client.OnPremisesMachineSessionInvalidator;
 import com.codenvy.auth.sso.client.ServerClient;
@@ -40,10 +41,7 @@ import com.codenvy.ldap.auth.LdapAuthenticationHandler;
 import com.codenvy.machine.agent.WorkspaceInfrastructureModule;
 import com.codenvy.machine.backup.DockerEnvironmentBackupManager;
 import com.codenvy.machine.backup.EnvironmentBackupManager;
-import com.codenvy.organization.api.OrganizationApiModule;
-import com.codenvy.organization.api.OrganizationJpaModule;
 import com.codenvy.plugin.gitlab.factory.resolver.GitlabFactoryParametersResolver;
-import com.codenvy.resource.api.ResourceModule;
 import com.codenvy.service.bitbucket.BitbucketConfigurationService;
 import com.codenvy.service.system.DockerBasedSystemRamInfoProvider;
 import com.codenvy.service.system.HostedSystemService;
@@ -124,9 +122,13 @@ import org.eclipse.che.multiuser.api.permission.server.PermissionChecker;
 import org.eclipse.che.multiuser.api.permission.server.PermissionCheckerImpl;
 import org.eclipse.che.multiuser.api.permission.server.jpa.SystemPermissionsJpaModule;
 import org.eclipse.che.multiuser.machine.authentication.server.MachineAuthLinksInjector;
+import org.eclipse.che.multiuser.organization.api.OrganizationApiModule;
+import org.eclipse.che.multiuser.organization.api.OrganizationJpaModule;
 import org.eclipse.che.multiuser.permission.machine.jpa.MultiuserMachineJpaModule;
 import org.eclipse.che.multiuser.permission.system.SystemServicePermissionsFilter;
 import org.eclipse.che.multiuser.permission.workspace.server.jpa.MultiuserWorkspaceJpaModule;
+import org.eclipse.che.multiuser.resource.api.ResourceModule;
+import org.eclipse.che.multiuser.resource.api.workspace.LimitsCheckingWorkspaceManager;
 import org.eclipse.che.plugin.github.factory.resolver.GithubFactoryParametersResolver;
 import org.eclipse.che.security.oauth.OAuthAuthenticatorProvider;
 import org.eclipse.che.security.oauth.OAuthAuthenticatorProviderImpl;
@@ -254,9 +256,20 @@ public class OnPremisesIdeApiModule extends AbstractModule {
 
     bind(WorkspaceValidator.class)
         .to(org.eclipse.che.api.workspace.server.DefaultWorkspaceValidator.class);
-    bind(WorkspaceManager.class).to(com.codenvy.api.workspace.LimitsCheckingWorkspaceManager.class);
+    bind(LimitsCheckingWorkspaceManager.class).to(SystemRamCheckingWorkspaceManager.class);
     bind(org.eclipse.che.api.workspace.server.TemporaryWorkspaceRemover.class);
     bind(WorkspaceMessenger.class).asEagerSingleton();
+
+    //Permission filters
+    bind(org.eclipse.che.multiuser.permission.user.UserProfileServicePermissionsFilter.class);
+    bind(org.eclipse.che.multiuser.permission.user.UserServicePermissionsFilter.class);
+    bind(org.eclipse.che.plugin.activity.ActivityPermissionsFilter.class);
+    bind(
+        org.eclipse.che.multiuser.permission.resource.filters.ResourceUsageServicePermissionsFilter
+            .class);
+    bind(
+        org.eclipse.che.multiuser.permission.resource.filters
+            .FreeResourcesLimitServicePermissionsFilter.class);
 
     bind(com.codenvy.service.password.PasswordService.class);
 

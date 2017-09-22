@@ -11,14 +11,14 @@
 package com.codenvy.api.invite.subscriber;
 
 import com.codenvy.api.invite.InviteManager;
-import com.codenvy.organization.api.event.BeforeOrganizationRemovedEvent;
-import com.codenvy.organization.api.permissions.OrganizationDomain;
 import com.codenvy.shared.invite.model.Invite;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import org.eclipse.che.api.core.Pages;
 import org.eclipse.che.api.core.notification.EventService;
 import org.eclipse.che.core.db.cascade.CascadeEventSubscriber;
+import org.eclipse.che.multiuser.organization.api.event.BeforeOrganizationRemovedEvent;
+import org.eclipse.che.multiuser.organization.api.permissions.OrganizationDomain;
 
 /**
  * Removes invitations that belong to organization that is going to be removed.

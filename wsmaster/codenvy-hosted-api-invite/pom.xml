@@ -31,10 +31,6 @@
         </dependency>
         <dependency>
             <groupId>com.codenvy.onpremises.wsmaster</groupId>
-            <artifactId>codenvy-hosted-api-organization</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.onpremises.wsmaster</groupId>
             <artifactId>codenvy-hosted-mail-sender</artifactId>
         </dependency>
         <dependency>
@@ -123,6 +119,10 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-api-organization</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
             <artifactId>che-multiuser-api-permission</artifactId>
         </dependency>
         <dependency>
@@ -183,6 +183,11 @@
         <dependency>
             <groupId>org.eclipse.che.core</groupId>
             <artifactId>che-core-sql-schema</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-sql-schema</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -319,14 +324,10 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- compiler inlines constants, so it is impossible to find reference on dependency -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
-                    <execution>
-                        <id>analyze</id>
-                    </execution>
                     <execution>
                         <id>resource-dependencies</id>
                         <phase>process-test-resources</phase>
@@ -335,6 +336,7 @@
                         </goals>
                         <configuration>
                             <includeArtifactIds>che-core-sql-schema,
+                                che-multiuser-sql-schema,
                                 codenvy-sql-schema</includeArtifactIds>
                             <includes>che-schema/,codenvy-schema/</includes>
                             <outputDirectory>${project.build.directory}</outputDirectory>

@@ -24,6 +24,5 @@
     <name>Codenvy :: Hosted :: Integration Tests</name>
     <modules>
         <module>codenvy-integration-tck-jpa</module>
-        <module>codenvy-integration-cascade-jpa</module>
     </modules>
 </project>

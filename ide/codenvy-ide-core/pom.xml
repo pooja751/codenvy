@@ -21,7 +21,7 @@
     </parent>
     <artifactId>codenvy-ide-core</artifactId>
     <packaging>jar</packaging>
-    <name>Che Core  IDE :: Basic IDE</name>
+    <name>Codenvy Core  IDE :: Basic IDE</name>
     <dependencies>
         <dependency>
             <groupId>com.codenvy.plugin</groupId>
