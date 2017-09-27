@@ -162,9 +162,10 @@
         <dependency>
             <groupId>org.eclipse.che.multiuser</groupId>
             <artifactId>che-multiuser-sql-schema</artifactId>
+            <scope>test</scope>
         </dependency>
-        <dependency>            
-<groupId>org.eclipse.persistence</groupId>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.core</artifactId>
             <scope>test</scope>
         </dependency>
