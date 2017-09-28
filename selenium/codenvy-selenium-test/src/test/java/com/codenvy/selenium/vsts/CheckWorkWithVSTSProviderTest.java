@@ -116,7 +116,7 @@ public class CheckWorkWithVSTSProviderTest {
       performSignInPage();
     }
     loginVSTS.clickOnAcceptBtn();
-    ide.driver().switchTo().window(ideWin);
+    seleniumWebDriver.switchTo().window(ideWin);
     loader.waitOnClosed();
     wizard.selectTypeProject(Wizard.TypeProject.BLANK);
     loader.waitOnClosed();
