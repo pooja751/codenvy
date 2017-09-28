@@ -222,9 +222,6 @@
             <class name="org.eclipse.che.selenium.editor.SplitEditorFeatureTest"/>
             <class name="com.codenvy.selenium.factory.AuthenticateAndAcceptFactoryThroughCredentialsTest"/>
             <class name="com.codenvy.selenium.factory.AuthenticateAndAcceptFactoryThroughGitHubOAuthTest"/>
-            <class name="org.eclipse.che.selenium.factory.CheckBitnamiCodeIgniterFactory"/>
-            <class name="org.eclipse.che.selenium.factory.CheckBitnamiSwiftFactory"/>
-            <class name="org.eclipse.che.selenium.factory.CheckBitnamiLaravelFactoryTest"/>
             <class name="org.eclipse.che.selenium.factory.DirectUrlFactoryWithKeepDirectory"/>
             <class name="org.eclipse.che.selenium.factory.DirectUrlFactoryWithRootFolder"/>
             <class name="org.eclipse.che.selenium.factory.DirectUrlFactoryWithSpecificBranch"/>
@@ -409,7 +406,7 @@
             <class name="org.eclipse.che.selenium.mavenplugin.GenerateEffectivePomTest"/>
             <class name="org.eclipse.che.selenium.miscellaneous.CheckCreatingProjectInEmptyWsTest"/>
             <class name="org.eclipse.che.selenium.miscellaneous.CheckMacrosFeatureTest"/>
-            <class name="org.eclipse.che.selenium.miscellaneous.CheckWsAgentAfterStopProcessTest">
+            <class name="org.eclipse.che.selenium.miscellaneous.CheckRestoringWorkspaceAfterStoppingWsAgentProcess">
                 <methods>
                     <!-- unstable -->
                     <exclude name="checkDialogAfterKillingProcess"/>
