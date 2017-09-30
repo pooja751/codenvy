@@ -40,7 +40,7 @@ public class LoginVSTS {
     String SIGN_IN_BTN = "//input[@type='submit']";
     String ACCEPT = "accept-button";
     String CONTINUE = "cred_continue_button";
-    String SIGN_IN_PAGE = "Credentials";
+    String SIGN_IN_PAGE = "idA_PWD_ForgotPassword";
   }
 
   @FindBy(id = Locators.LOGIN_PAGE)
