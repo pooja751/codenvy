@@ -10,20 +10,21 @@
  */
 package com.codenvy.selenium.core.requestfactory;
 
+import com.google.inject.Inject;
 import com.google.inject.Provider;
-import com.google.inject.name.Named;
-import javax.inject.Inject;
 import org.eclipse.che.selenium.core.client.TestAuthServiceClient;
 import org.eclipse.che.selenium.core.requestfactory.TestUserHttpJsonRequestFactory;
+import org.eclipse.che.selenium.core.user.TestUser;
 
-/** @author Dmytro Nochevnov */
-public class TestAdminHttpJsonRequestFactory extends TestUserHttpJsonRequestFactory {
+/** @author Anton Korneta */
+public class TestDefaultUserHttpJsonRequestFactory extends TestUserHttpJsonRequestFactory {
 
   @Inject
-  public TestAdminHttpJsonRequestFactory(
-      Provider<TestAuthServiceClient> authServiceClientProvider,
-      @Named("codenvy.admin.name") String adminName,
-      @Named("codenvy.admin.password") String adminPassword) {
-    super(authServiceClientProvider.get(), adminName, adminPassword);
+  public TestDefaultUserHttpJsonRequestFactory(
+      Provider<TestAuthServiceClient> authServiceClient, Provider<TestUser> testUserProvider) {
+    super(
+        authServiceClient.get(),
+        testUserProvider.get().getEmail(),
+        testUserProvider.get().getPassword());
   }
 }

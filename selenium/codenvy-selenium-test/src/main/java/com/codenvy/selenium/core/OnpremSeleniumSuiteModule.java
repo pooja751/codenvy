@@ -15,10 +15,12 @@ import static org.eclipse.che.selenium.core.utils.PlatformUtils.isMac;
 import com.codenvy.selenium.core.client.OnpremTestAuthServiceClient;
 import com.codenvy.selenium.core.client.OnpremTestMachineServiceClient;
 import com.codenvy.selenium.core.client.OnpremTestOrganizationServiceClient;
+import com.codenvy.selenium.core.client.OnpremTestUserServiceClient;
 import com.codenvy.selenium.core.provider.OnpremTestApiEndpointUrlProvider;
 import com.codenvy.selenium.core.provider.OnpremTestDashboardUrlProvider;
 import com.codenvy.selenium.core.provider.OnpremTestIdeUrlProvider;
 import com.codenvy.selenium.core.requestfactory.TestAdminHttpJsonRequestFactory;
+import com.codenvy.selenium.core.requestfactory.TestDefaultUserHttpJsonRequestFactory;
 import com.codenvy.selenium.core.user.OnpremAdminTestUser;
 import com.codenvy.selenium.core.user.OnpremTestUserNamespaceResolver;
 import com.codenvy.selenium.core.workspace.OnpremTestWorkspaceUrlResolver;
@@ -33,6 +35,7 @@ import org.eclipse.che.selenium.core.action.GenericActionsFactory;
 import org.eclipse.che.selenium.core.action.MacOSActionsFactory;
 import org.eclipse.che.selenium.core.client.TestAuthServiceClient;
 import org.eclipse.che.selenium.core.client.TestMachineServiceClient;
+import org.eclipse.che.selenium.core.client.TestUserServiceClient;
 import org.eclipse.che.selenium.core.client.TestWorkspaceServiceClientFactory;
 import org.eclipse.che.selenium.core.configuration.SeleniumTestConfiguration;
 import org.eclipse.che.selenium.core.configuration.TestConfiguration;
@@ -47,7 +50,7 @@ import org.eclipse.che.selenium.core.provider.TestSvnPasswordProvider;
 import org.eclipse.che.selenium.core.provider.TestSvnRepo1Provider;
 import org.eclipse.che.selenium.core.provider.TestSvnRepo2Provider;
 import org.eclipse.che.selenium.core.provider.TestSvnUsernameProvider;
-import org.eclipse.che.selenium.core.requestfactory.CheTestDefaultUserHttpJsonRequestFactory;
+import org.eclipse.che.selenium.core.requestfactory.TestUserHttpJsonRequestFactory;
 import org.eclipse.che.selenium.core.requestfactory.TestUserHttpJsonRequestFactoryCreator;
 import org.eclipse.che.selenium.core.user.AdminTestUser;
 import org.eclipse.che.selenium.core.user.TestUser;
@@ -86,9 +89,11 @@ public class OnpremSeleniumSuiteModule extends AbstractModule {
     bind(TestIdeUrlProvider.class).to(OnpremTestIdeUrlProvider.class);
     bind(TestDashboardUrlProvider.class).to(OnpremTestDashboardUrlProvider.class);
 
-    bind(HttpJsonRequestFactory.class).to(CheTestDefaultUserHttpJsonRequestFactory.class);
+    bind(HttpJsonRequestFactory.class).to(TestUserHttpJsonRequestFactory.class);
+    bind(TestUserHttpJsonRequestFactory.class).to(TestDefaultUserHttpJsonRequestFactory.class);
     install(new FactoryModuleBuilder().build(TestUserHttpJsonRequestFactoryCreator.class));
 
+    bind(TestUserServiceClient.class).to(OnpremTestUserServiceClient.class);
     bind(TestAuthServiceClient.class).to(OnpremTestAuthServiceClient.class);
     bind(TestMachineServiceClient.class).to(OnpremTestMachineServiceClient.class);
 
