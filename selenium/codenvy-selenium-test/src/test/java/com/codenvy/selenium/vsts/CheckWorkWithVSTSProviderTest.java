@@ -132,12 +132,11 @@ public class CheckWorkWithVSTSProviderTest {
     }
     loginVSTS.clickOnAcceptBtn();
     captureScreenshot(seleniumWebDriver, "screen_before_click_accept_button");
-    new WebDriverWait(seleniumWebDriver,20).until(ExpectedConditions.numberOfWindowsToBe(1));
+    new WebDriverWait(seleniumWebDriver, 20).until(ExpectedConditions.numberOfWindowsToBe(1));
     seleniumWebDriver.switchTo().window(ideWin);
     for (int i = 0; i < 20; i++) {
-      captureScreenshot(seleniumWebDriver, "screen_after_clone_in_IDE"+ i);
+      captureScreenshot(seleniumWebDriver, "screen_after_clone_in_IDE" + i);
       WaitUtils.sleepQuietly(1);
-
     }
     loader.waitOnClosed();
     wizard.selectTypeProject(Wizard.TypeProject.BLANK);
