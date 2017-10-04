@@ -132,6 +132,7 @@ public class CheckWorkWithVSTSProviderTest {
     seleniumWebDriver.switchTo().window(ideWin);
     captureScreenshot(seleniumWebDriver, "screen_after_clone_in_IDE");
     loader.waitOnClosed();
+    wizard.waitCreateProjectWizardForm();
     wizard.selectTypeProject(Wizard.TypeProject.BLANK);
     loader.waitOnClosed();
     wizard.clickSaveButton();
