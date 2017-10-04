@@ -23,6 +23,7 @@ import java.util.Date;
 import org.eclipse.che.selenium.core.SeleniumWebDriver;
 import org.eclipse.che.selenium.core.constant.TestMenuCommandsConstants;
 import org.eclipse.che.selenium.core.user.DefaultTestUser;
+import org.eclipse.che.selenium.core.utils.WaitUtils;
 import org.eclipse.che.selenium.core.workspace.TestWorkspace;
 import org.eclipse.che.selenium.pageobject.AskDialog;
 import org.eclipse.che.selenium.pageobject.CodenvyEditor;
@@ -132,7 +133,7 @@ public class CheckWorkWithVSTSProviderTest {
     seleniumWebDriver.switchTo().window(ideWin);
     captureScreenshot(seleniumWebDriver, "screen_after_clone_in_IDE");
     loader.waitOnClosed();
-    wizard.waitCreateProjectWizardForm();
+    WaitUtils.sleepQuietly(20);
     wizard.selectTypeProject(Wizard.TypeProject.BLANK);
     loader.waitOnClosed();
     wizard.clickSaveButton();
