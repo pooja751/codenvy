@@ -39,6 +39,8 @@ import org.eclipse.che.selenium.pageobject.git.Git;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -130,11 +132,14 @@ public class CheckWorkWithVSTSProviderTest {
     }
     loginVSTS.clickOnAcceptBtn();
     captureScreenshot(seleniumWebDriver, "screen_before_click_accept_button");
+    new WebDriverWait(seleniumWebDriver,20).until(ExpectedConditions.numberOfWindowsToBe(1));
     seleniumWebDriver.switchTo().window(ideWin);
-    captureScreenshot(seleniumWebDriver, "screen_after_clone_in_IDE");
+    for (int i = 0; i < 20; i++) {
+      captureScreenshot(seleniumWebDriver, "screen_after_clone_in_IDE"+ i);
+      WaitUtils.sleepQuietly(1);
+
+    }
     loader.waitOnClosed();
-    WaitUtils.sleepQuietly(20);
-    captureScreenshot(seleniumWebDriver, "screen_after_clone_in_IDE2");
     wizard.selectTypeProject(Wizard.TypeProject.BLANK);
     loader.waitOnClosed();
     wizard.clickSaveButton();
