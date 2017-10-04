@@ -14,6 +14,11 @@ import com.codenvy.selenium.core.client.OnpremTestOAuthServiceClient;
 import com.codenvy.selenium.pageobject.site.LoginVSTS;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 import org.eclipse.che.selenium.core.SeleniumWebDriver;
 import org.eclipse.che.selenium.core.constant.TestMenuCommandsConstants;
@@ -30,7 +35,9 @@ import org.eclipse.che.selenium.pageobject.Menu;
 import org.eclipse.che.selenium.pageobject.ProjectExplorer;
 import org.eclipse.che.selenium.pageobject.Wizard;
 import org.eclipse.che.selenium.pageobject.git.Git;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriverException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -105,18 +112,25 @@ public class CheckWorkWithVSTSProviderTest {
       loginVSTS.enterPassword(vstsPassword);
       loginVSTS.waitSignInPage();
       performSignInPage();
+      captureScreenshot(seleniumWebDriver, "screen_after_sign_in_page");
     } else {
       loginVSTS.enterLogin(vstsLogin);
+      captureScreenshot(seleniumWebDriver, "screen_after_sign_in_page_in_else_block");
       try {
         loginVSTS.clickOnContinueBtn();
+        captureScreenshot(seleniumWebDriver, "screen_after_sign_in_page_in_else_block");
       } catch (org.openqa.selenium.TimeoutException ex) {
         loginVSTS.waitSignInPage();
+        captureScreenshot(seleniumWebDriver, "screen_after_login_on_VSTS");
       }
       loginVSTS.waitSignInPage();
       performSignInPage();
+      captureScreenshot(seleniumWebDriver, "screen_after_login_on_VSTS");
     }
     loginVSTS.clickOnAcceptBtn();
+    captureScreenshot(seleniumWebDriver, "screen_before_click_accept_button");
     seleniumWebDriver.switchTo().window(ideWin);
+    captureScreenshot(seleniumWebDriver, "screen_after_clone_in_IDE");
     loader.waitOnClosed();
     wizard.selectTypeProject(Wizard.TypeProject.BLANK);
     loader.waitOnClosed();
@@ -128,7 +142,7 @@ public class CheckWorkWithVSTSProviderTest {
     projectExplorer.waitItem(PATH_TO_README);
   }
 
-  @Test(priority = 1)
+  //  @Test(priority = 1)
   public void commitAndPushVSTS() {
     projectExplorer.openItemByPath(PATH_TO_README);
     loader.waitOnClosed();
@@ -160,7 +174,7 @@ public class CheckWorkWithVSTSProviderTest {
     events.waitExpectedMessage(PUSH_MSG);
   }
 
-  @Test(priority = 2)
+  //@Test(priority = 2)
   public void resetAndPullVSTS() {
     projectExplorer.openItemByPath(PATH_TO_README);
     loader.waitOnClosed();
@@ -217,5 +231,20 @@ public class CheckWorkWithVSTSProviderTest {
   private void performSignInPage() {
     loginVSTS.enterPassword(vstsPassword);
     loginVSTS.clickOnSignInBtn();
+    captureScreenshot(seleniumWebDriver, "screen_after_login_on_VSTS");
+  }
+
+  private void captureScreenshot(SeleniumWebDriver webDriver, String fileName) {
+    String filename = fileName + ".png";
+    String screenshotDir = "target/screenshots";
+    try {
+      byte[] data = webDriver.getScreenshotAs(OutputType.BYTES);
+      Path screenshot = Paths.get(screenshotDir, filename);
+
+      Files.createDirectories(screenshot.getParent());
+      Files.copy(new ByteArrayInputStream(data), screenshot);
+    } catch (WebDriverException | IOException e) {
+      System.err.print("Can't capture screenshot for test %s");
+    }
   }
 }
