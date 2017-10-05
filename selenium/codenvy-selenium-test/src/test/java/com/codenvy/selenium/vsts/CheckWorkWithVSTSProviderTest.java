@@ -113,7 +113,7 @@ public class CheckWorkWithVSTSProviderTest {
     loginVSTS.waitLoginPage();
     if (stateVSTSLoginPage()) {
       loginVSTS.enterLogin(vstsLogin);
-    //  loginVSTS.enterPassword(vstsPassword);
+      //  loginVSTS.enterPassword(vstsPassword);
       loginVSTS.waitSignInPage();
       WaitUtils.sleepQuietly(2);
       performSignInPage();
