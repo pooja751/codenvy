@@ -105,7 +105,7 @@ public class CheckWorkWithVSTSProviderTest {
     loader.waitOnClosed();
     importWidget.typeURi(GIT_URL_TO_PROJECT);
     importWidget.typeProjectName(PROJECT_NAME);
-    WaitUtils.sleepQuietly(1800);
+    WaitUtils.sleepQuietly(60);
     importWidget.clickImportBtnWithoutWait();
     authorizationDialog.waitFormToOpen();
     authorizationDialog.clickOkBtn();
