@@ -99,11 +99,13 @@ public class CheckWorkWithVSTSProviderTest {
     menu.runCommand(
         TestMenuCommandsConstants.Workspace.WORKSPACE,
         TestMenuCommandsConstants.Workspace.IMPORT_PROJECT);
+
     importWidget.waitMainForm();
     importWidget.selectGitSourceItem();
     loader.waitOnClosed();
     importWidget.typeURi(GIT_URL_TO_PROJECT);
     importWidget.typeProjectName(PROJECT_NAME);
+    WaitUtils.sleepQuietly(1800);
     importWidget.clickImportBtnWithoutWait();
     authorizationDialog.waitFormToOpen();
     authorizationDialog.clickOkBtn();

@@ -21,7 +21,7 @@ services:
       - selenium_grid_internal
 
   chromenode:
-    image: selenium/node-chrome${NODE_CHROME_DEBUG_SUFFIX}:3.1.0
+    image: selenium/node-chrome-debug:3.1.0
     depends_on:
       - selenium_hub
     environment:
