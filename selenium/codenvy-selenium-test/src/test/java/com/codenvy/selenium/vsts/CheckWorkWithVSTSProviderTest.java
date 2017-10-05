@@ -105,7 +105,6 @@ public class CheckWorkWithVSTSProviderTest {
     loader.waitOnClosed();
     importWidget.typeURi(GIT_URL_TO_PROJECT);
     importWidget.typeProjectName(PROJECT_NAME);
-    WaitUtils.sleepQuietly(60);
     importWidget.clickImportBtnWithoutWait();
     authorizationDialog.waitFormToOpen();
     authorizationDialog.clickOkBtn();
@@ -114,8 +113,9 @@ public class CheckWorkWithVSTSProviderTest {
     loginVSTS.waitLoginPage();
     if (stateVSTSLoginPage()) {
       loginVSTS.enterLogin(vstsLogin);
-      loginVSTS.enterPassword(vstsPassword);
+    //  loginVSTS.enterPassword(vstsPassword);
       loginVSTS.waitSignInPage();
+      WaitUtils.sleepQuietly(2);
       performSignInPage();
       captureScreenshot(seleniumWebDriver, "screen_after_sign_in_page");
     } else {
