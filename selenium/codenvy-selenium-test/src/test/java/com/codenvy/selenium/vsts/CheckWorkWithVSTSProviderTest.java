@@ -113,9 +113,9 @@ public class CheckWorkWithVSTSProviderTest {
     loginVSTS.waitLoginPage();
     if (stateVSTSLoginPage()) {
       loginVSTS.enterLogin(vstsLogin);
-      //  loginVSTS.enterPassword(vstsPassword);
-      loginVSTS.waitSignInPage();
+      loginVSTS.enterPassword(vstsPassword);
       WaitUtils.sleepQuietly(2);
+      loginVSTS.waitSignInPage();
       performSignInPage();
       captureScreenshot(seleniumWebDriver, "screen_after_sign_in_page");
     } else {
