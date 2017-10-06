@@ -21,7 +21,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-import com.codenvy.organization.shared.dto.OrganizationDto;
 import com.codenvy.selenium.core.client.OnpremTestOrganizationServiceClient;
 import com.codenvy.selenium.pageobject.dashboard.CodenvyAdminDashboard;
 import com.codenvy.selenium.pageobject.dashboard.organization.OrganizationListPage;
@@ -30,8 +29,9 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import java.util.ArrayList;
 import org.eclipse.che.commons.lang.NameGenerator;
+import org.eclipse.che.multiuser.organization.shared.dto.OrganizationDto;
 import org.eclipse.che.selenium.core.user.AdminTestUser;
-import org.eclipse.che.selenium.core.user.DefaultTestUser;
+import org.eclipse.che.selenium.core.user.TestUser;
 import org.eclipse.che.selenium.pageobject.dashboard.NavigationBar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,12 +59,12 @@ public class AdminOfSubOrganizationTest {
   @Named("admin")
   private OnpremTestOrganizationServiceClient organizationServiceClient;
 
-  @Inject private DefaultTestUser testUser;
+  @Inject private TestUser testUser;
   @Inject private AdminTestUser adminTestUser;
 
   @BeforeClass
   public void setUp() throws Exception {
-    dashboard.open(adminTestUser.getAuthToken());
+    dashboard.open();
 
     parentOrganization =
         organizationServiceClient.createOrganization(NameGenerator.generate("organization", 5));
@@ -75,7 +75,7 @@ public class AdminOfSubOrganizationTest {
     organizationServiceClient.addOrganizationMember(parentOrganization.getId(), testUser.getId());
     organizationServiceClient.addOrganizationAdmin(childOrganization.getId(), testUser.getId());
 
-    dashboard.open(testUser.getAuthToken());
+    dashboard.open();
   }
 
   @AfterClass

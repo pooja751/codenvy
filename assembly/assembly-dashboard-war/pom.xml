@@ -67,6 +67,10 @@
             <artifactId>che-core-commons-lang</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-api-authorization</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
             <scope>provided</scope>

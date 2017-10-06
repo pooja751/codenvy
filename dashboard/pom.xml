@@ -85,22 +85,22 @@
                             </target>
                         </configuration>
                     </execution>
-                    <execution>
-                      <id>compilation</id>
-                      <phase>test</phase>
-                      <goals>
-                        <goal>run</goal>
-                      </goals>
-                      <configuration>
-                        <target unless="skipTests">
-                          <!-- Run unit tests -->
-                          <exec dir="${basedir}" executable="npm" failonerror="true">
-                            <arg value="run" />
-                            <arg value="test" />
-                          </exec>
-                        </target>
-                      </configuration>
-                    </execution>
+                   <!-- no tests at the moment <execution>
+                        <id>compilation</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target unless="skipTests">
+                                &lt;!&ndash; Run unit tests &ndash;&gt;
+                                <exec dir="${basedir}" executable="npm" failonerror="true">
+                                    <arg value="run" />
+                                    <arg value="test" />
+                                </exec>
+                            </target>
+                        </configuration>
+                    </execution>-->
                 </executions>
             </plugin>
             <plugin>

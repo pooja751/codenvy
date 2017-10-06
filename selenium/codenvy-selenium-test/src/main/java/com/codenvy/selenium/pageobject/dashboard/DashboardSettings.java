@@ -17,9 +17,11 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.eclipse.che.selenium.core.SeleniumWebDriver;
+import org.eclipse.che.selenium.core.entrance.Entrance;
 import org.eclipse.che.selenium.core.provider.TestDashboardUrlProvider;
 import org.eclipse.che.selenium.core.provider.TestIdeUrlProvider;
-import org.eclipse.che.selenium.core.user.DefaultTestUser;
+import org.eclipse.che.selenium.core.user.TestUser;
+import org.eclipse.che.selenium.pageobject.site.LoginPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -57,10 +59,18 @@ public class DashboardSettings extends CodenvyAdminDashboard {
   @Inject
   public DashboardSettings(
       SeleniumWebDriver seleniumWebDriver,
-      DefaultTestUser defaultUser,
+      TestUser testUser,
       TestIdeUrlProvider testIdeUrlProvider,
-      TestDashboardUrlProvider testDashboardUrlProvider) {
-    super(seleniumWebDriver, defaultUser, testIdeUrlProvider, testDashboardUrlProvider);
+      TestDashboardUrlProvider testDashboardUrlProvider,
+      Entrance entrance,
+      LoginPage loginPage) {
+    super(
+        seleniumWebDriver,
+        testUser,
+        testIdeUrlProvider,
+        testDashboardUrlProvider,
+        entrance,
+        loginPage);
     PageFactory.initElements(seleniumWebDriver, this);
   }
 

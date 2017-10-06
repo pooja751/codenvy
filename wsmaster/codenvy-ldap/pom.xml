@@ -27,10 +27,6 @@
     <dependencies>
         <dependency>
             <groupId>com.codenvy.onpremises.wsmaster</groupId>
-            <artifactId>codenvy-hosted-api-permission</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.onpremises.wsmaster</groupId>
             <artifactId>codenvy-hosted-platform-api-impl</artifactId>
         </dependency>
         <dependency>
@@ -67,7 +63,7 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.che.core</groupId>
-            <artifactId>che-core-api-auth</artifactId>
+            <artifactId>che-core-api-account</artifactId>
         </dependency>
         <dependency>
             <groupId>org.eclipse.che.core</groupId>
@@ -84,6 +80,10 @@
         <dependency>
             <groupId>org.eclipse.che.core</groupId>
             <artifactId>che-core-commons-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.che.core</groupId>
+            <artifactId>che-core-commons-auth</artifactId>
         </dependency>
         <dependency>
             <groupId>org.eclipse.che.core</groupId>
@@ -160,6 +160,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-sql-schema</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.core</artifactId>
             <scope>test</scope>
@@ -208,11 +213,6 @@
                 <executions>
                     <execution>
                         <id>analyze</id>
-                        <configuration>
-                            <ignoredDependencies>
-                                <ignoredDependency>com.codenvy.onpremises.wsmaster:codenvy-hosted-api-permission</ignoredDependency>
-                            </ignoredDependencies>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>resource-dependencies</id>
@@ -222,6 +222,7 @@
                         </goals>
                         <configuration>
                             <includeArtifactIds>che-core-sql-schema,
+                                che-multiuser-sql-schema,
                                 codenvy-sql-schema</includeArtifactIds>
                             <includes>che-schema/,codenvy-schema/</includes>
                             <outputDirectory>${project.build.directory}</outputDirectory>

@@ -25,10 +25,6 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>com.codenvy.onpremises.wsmaster</groupId>
-            <artifactId>codenvy-hosted-api-permission</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
@@ -84,10 +80,6 @@
         </dependency>
         <dependency>
             <groupId>org.everrest</groupId>
-            <artifactId>everrest-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.everrest</groupId>
             <artifactId>everrest-websockets</artifactId>
         </dependency>
         <dependency>
@@ -138,20 +130,6 @@
             </resource>
         </resources>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>analyze</id>
-                        <configuration>
-                            <ignoredDependencies>
-                                <ignoredDependency>com.codenvy.onpremises.wsmaster:codenvy-hosted-api-permission</ignoredDependency>
-                            </ignoredDependencies>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.eclipse.che.core</groupId>
                 <artifactId>che-core-api-dto-maven-plugin</artifactId>

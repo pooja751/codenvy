@@ -13,7 +13,6 @@ package com.codenvy.api.audit.server.printer;
 import static com.google.common.io.Files.append;
 import static java.lang.String.format;
 
-import com.codenvy.api.permission.server.model.impl.AbstractPermissions;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
@@ -22,6 +21,7 @@ import java.util.Map;
 import org.eclipse.che.api.core.ServerException;
 import org.eclipse.che.api.user.server.model.impl.UserImpl;
 import org.eclipse.che.api.workspace.server.model.impl.WorkspaceImpl;
+import org.eclipse.che.multiuser.api.permission.server.model.impl.AbstractPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

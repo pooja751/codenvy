@@ -21,11 +21,11 @@ import static org.mockito.Mockito.verify;
 
 import com.codenvy.api.invite.InviteImpl;
 import com.codenvy.api.invite.InviteManager;
-import com.codenvy.api.workspace.server.WorkspaceDomain;
 import org.eclipse.che.api.core.Page;
 import org.eclipse.che.api.core.notification.EventService;
 import org.eclipse.che.api.workspace.server.event.BeforeWorkspaceRemovedEvent;
 import org.eclipse.che.api.workspace.server.model.impl.WorkspaceImpl;
+import org.eclipse.che.multiuser.permission.workspace.server.WorkspaceDomain;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.testng.MockitoTestNGListener;

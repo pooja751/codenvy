@@ -10,9 +10,6 @@
  */
 package com.codenvy.plugin.activity;
 
-import com.codenvy.resource.api.type.TimeoutResourceType;
-import com.codenvy.resource.api.usage.ResourceUsageManager;
-import com.codenvy.resource.model.Resource;
 import com.google.inject.Inject;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +21,9 @@ import org.eclipse.che.api.core.ServerException;
 import org.eclipse.che.api.core.notification.EventService;
 import org.eclipse.che.api.workspace.server.WorkspaceManager;
 import org.eclipse.che.api.workspace.server.model.impl.WorkspaceImpl;
+import org.eclipse.che.multiuser.resource.api.type.TimeoutResourceType;
+import org.eclipse.che.multiuser.resource.api.usage.ResourceUsageManager;
+import org.eclipse.che.multiuser.resource.model.Resource;
 import org.eclipse.che.plugin.activity.WorkspaceActivityManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

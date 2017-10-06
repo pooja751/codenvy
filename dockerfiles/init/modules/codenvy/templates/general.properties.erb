@@ -34,14 +34,14 @@ integration.factory.owner.password=<%= scope.lookupvar('codenvy::integration_fac
 che.auth.user_self_creation=<%= scope.lookupvar('codenvy::user_self_creation_allowed') %>
 
 # Limits
-limits.user.workspaces.count=<%= scope.lookupvar('codenvy::limits_user_workspaces_count') %>
-limits.user.workspaces.run.count=<%= scope.lookupvar('codenvy::limits_user_workspaces_run_count') %>
-limits.user.workspaces.ram=<%= scope.lookupvar('codenvy::limits_user_workspaces_ram') %>
-limits.organization.workspaces.ram=<%= scope.lookupvar('codenvy::limits_organization_workspaces_ram') %>
-limits.organization.workspaces.count=<%= scope.lookupvar('codenvy::limits_organization_workspaces_count') %>
-limits.organization.workspaces.run.count=<%= scope.lookupvar('codenvy::limits_organization_workspaces_run_count') %>
-limits.workspace.idle.timeout=<%= scope.lookupvar('codenvy::limits_workspace_idle_timeout') %>
-limits.workspace.env.ram=<%= scope.lookupvar('codenvy::limits_workspace_env_ram') %>
+che.limits.user.workspaces.count=<%= scope.lookupvar('codenvy::limits_user_workspaces_count') %>
+che.limits.user.workspaces.run.count=<%= scope.lookupvar('codenvy::limits_user_workspaces_run_count') %>
+che.limits.user.workspaces.ram=<%= scope.lookupvar('codenvy::limits_user_workspaces_ram') %>
+che.limits.organization.workspaces.ram=<%= scope.lookupvar('codenvy::limits_organization_workspaces_ram') %>
+che.limits.organization.workspaces.count=<%= scope.lookupvar('codenvy::limits_organization_workspaces_count') %>
+che.limits.organization.workspaces.run.count=<%= scope.lookupvar('codenvy::limits_organization_workspaces_run_count') %>
+che.limits.workspace.idle.timeout=<%= scope.lookupvar('codenvy::limits_workspace_idle_timeout') %>
+che.limits.workspace.env.ram=<%= scope.lookupvar('codenvy::limits_workspace_env_ram') %>
 limits.workspace.start.throughput=5
 
 # workspace proxy configuration
@@ -80,7 +80,7 @@ db.schema.flyway.scripts.locations=<%= scope.lookupvar('codenvy::db_schema_flywa
 db.jndi.datasource.name=java:/comp/env/jdbc/codenvy
 
 # Super privileged mode
-system.super_privileged_mode=<%= scope.lookupvar('codenvy::system_super_privileged_mode') %>
+che.system.super_privileged_mode=<%= scope.lookupvar('codenvy::system_super_privileged_mode') %>
 
 auth.blocked_country_names=<%= scope.lookupvar('codenvy::auth_blocked_country_names') %>
 
@@ -88,4 +88,4 @@ auth.blocked_country_names=<%= scope.lookupvar('codenvy::auth_blocked_country_na
 emailvalidator.blacklistfile=<%= scope.lookupvar('codenvy::emailvalidator_blacklistfile') %>
 
 # stacks loading policy
-codenvy.predefined.stacks.reload_on_start=<%= scope.lookupvar('codenvy::codenvy_predefined_stacks_reload_on_start') %>
+che.predefined.stacks.reload_on_start=<%= scope.lookupvar('codenvy::che_predefined_stacks_reload_on_start') %>

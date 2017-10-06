@@ -13,7 +13,6 @@ package com.codenvy.selenium.dashboard.organization;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-import com.codenvy.organization.shared.dto.OrganizationDto;
 import com.codenvy.selenium.core.client.OnpremTestOrganizationServiceClient;
 import com.codenvy.selenium.pageobject.dashboard.organization.AddOrganization;
 import com.codenvy.selenium.pageobject.dashboard.organization.OrganizationListPage;
@@ -22,6 +21,7 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import java.util.List;
 import org.eclipse.che.commons.lang.NameGenerator;
+import org.eclipse.che.multiuser.organization.shared.dto.OrganizationDto;
 import org.eclipse.che.selenium.core.user.AdminTestUser;
 import org.eclipse.che.selenium.pageobject.dashboard.Dashboard;
 import org.eclipse.che.selenium.pageobject.dashboard.NavigationBar;
@@ -56,7 +56,7 @@ public class FilterOrganizationTest {
 
   @BeforeClass
   public void setUp() throws Exception {
-    dashboard.open(adminTestUser.getAuthToken());
+    dashboard.open();
 
     organizationName = NameGenerator.generate("organization", 5);
     organizations = organizationServiceClient.getOrganizations();

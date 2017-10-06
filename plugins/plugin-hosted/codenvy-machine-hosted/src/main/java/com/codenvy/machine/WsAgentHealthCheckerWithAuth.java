@@ -10,7 +10,6 @@
  */
 package com.codenvy.machine;
 
-import com.codenvy.machine.authentication.shared.dto.MachineTokenDto;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,6 +23,7 @@ import org.eclipse.che.api.core.ServerException;
 import org.eclipse.che.api.core.model.machine.Machine;
 import org.eclipse.che.api.core.rest.HttpJsonRequest;
 import org.eclipse.che.api.core.rest.HttpJsonRequestFactory;
+import org.eclipse.che.multiuser.machine.authentication.shared.dto.MachineTokenDto;
 
 /**
  * Mechanism for checking workspace agent's state by using the machine token.
@@ -48,6 +48,7 @@ public class WsAgentHealthCheckerWithAuth extends WsAgentHealthCheckerImpl {
   }
 
   // modifies the ping request if it is possible to get the machine token.
+  @Override
   protected HttpJsonRequest createPingRequest(Machine devMachine) throws ServerException {
     final HttpJsonRequest pingRequest = super.createPingRequest(devMachine);
     final String tokenServiceUrl =

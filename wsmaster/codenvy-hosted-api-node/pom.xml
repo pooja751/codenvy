@@ -30,10 +30,6 @@
             <artifactId>codenvy-hosted-api-node-shared</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.codenvy.onpremises.wsmaster</groupId>
-            <artifactId>codenvy-hosted-api-permission</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
@@ -80,6 +76,11 @@
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
             <artifactId>guice-persist</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-api-permission</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -217,11 +218,6 @@
                 <executions>
                     <execution>
                         <id>analyze</id>
-                        <configuration>
-                            <ignoredDependencies>
-                                <ignoreDependenvy>com.codenvy.onpremises.wsmaster:codenvy-hosted-api-permission</ignoreDependenvy>
-                            </ignoredDependencies>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

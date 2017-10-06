@@ -17,11 +17,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertNull;
 
-import com.codenvy.machine.authentication.server.MachineTokenRegistry;
 import javax.servlet.http.HttpSession;
 import org.eclipse.che.api.core.notification.EventService;
 import org.eclipse.che.api.workspace.shared.dto.event.WorkspaceStatusEvent;
 import org.eclipse.che.commons.lang.NameGenerator;
+import org.eclipse.che.multiuser.machine.authentication.server.MachineTokenRegistry;
 import org.junit.Test;
 
 /** @author Yevhenii Voevodin */
@@ -32,8 +32,8 @@ public class MachineSessionInvalidatorTest {
     final MachineTokenRegistry registry = new MachineTokenRegistry();
     final EventService eventService = new EventService();
     final SessionStore sessionStore = new SessionStore();
-    final MachineSessionInvalidator invalidator =
-        new MachineSessionInvalidator(registry, sessionStore, eventService);
+    final OnPremisesMachineSessionInvalidator invalidator =
+        new OnPremisesMachineSessionInvalidator(registry, sessionStore, eventService);
     invalidator.subscribe();
     // generating a few tokens for the workspace
     final String token1 = registry.generateToken("user123", "workspace123");

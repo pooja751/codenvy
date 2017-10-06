@@ -27,23 +27,11 @@
     <dependencies>
         <dependency>
             <groupId>com.codenvy.onpremises.wsmaster</groupId>
-            <artifactId>codenvy-hosted-api-permission-shared</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.onpremises.wsmaster</groupId>
             <artifactId>codenvy-hosted-sso-client</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.inject</groupId>
@@ -54,16 +42,12 @@
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.che.core</groupId>
-            <artifactId>che-core-api-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.eclipse.che.core</groupId>
             <artifactId>che-core-api-dto</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.che.multiuser</groupId>
+            <artifactId>che-multiuser-api-authorization</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -72,11 +56,6 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.codenvy.onpremises.wsmaster</groupId>
-            <artifactId>codenvy-hosted-api-permission</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -122,14 +101,14 @@
                 </executions>
                 <dependencies>
                     <dependency>
-                        <groupId>com.codenvy.onpremises.wsmaster</groupId>
-                        <artifactId>codenvy-hosted-api-permission-shared</artifactId>
+                        <groupId>org.eclipse.che.multiuser</groupId>
+                        <artifactId>che-multiuser-api-permission-shared</artifactId>
                         <version>${project.version}</version>
                     </dependency>
                 </dependencies>
                 <configuration>
                     <dtoPackages>
-                        <package>com.codenvy.api.permission.shared.dto</package>
+                        <package>org.eclipse.che.api.permission.shared.dto</package>
                     </dtoPackages>
                     <outputDirectory>${dto-generator-out-directory}</outputDirectory>
                     <genClassName>com.codenvy.api.permission.server.dto.DtoServerImpls</genClassName>

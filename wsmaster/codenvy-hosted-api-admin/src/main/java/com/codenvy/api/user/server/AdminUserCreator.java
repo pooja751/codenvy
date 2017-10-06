@@ -13,10 +13,6 @@ package com.codenvy.api.user.server;
 import static java.lang.String.format;
 import static java.util.Collections.emptyList;
 
-import com.codenvy.api.permission.server.AbstractPermissionsDomain;
-import com.codenvy.api.permission.server.PermissionsManager;
-import com.codenvy.api.permission.server.SystemDomain;
-import com.codenvy.api.permission.server.model.impl.AbstractPermissions;
 import com.codenvy.ldap.auth.LdapAuthenticationHandler;
 import com.google.inject.Singleton;
 import javax.annotation.PostConstruct;
@@ -33,6 +29,10 @@ import org.eclipse.che.api.user.server.UserManager;
 import org.eclipse.che.api.user.server.event.PostUserPersistedEvent;
 import org.eclipse.che.api.user.server.model.impl.UserImpl;
 import org.eclipse.che.core.db.DBInitializer;
+import org.eclipse.che.multiuser.api.permission.server.AbstractPermissionsDomain;
+import org.eclipse.che.multiuser.api.permission.server.PermissionsManager;
+import org.eclipse.che.multiuser.api.permission.server.SystemDomain;
+import org.eclipse.che.multiuser.api.permission.server.model.impl.AbstractPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -10,8 +10,6 @@
  */
 package com.codenvy.api.permission.server;
 
-import static java.lang.String.format;
-
 import com.codenvy.auth.sso.client.SsoClientPrincipal;
 import com.codenvy.auth.sso.client.TokenHandler;
 import java.io.IOException;
@@ -22,11 +20,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.eclipse.che.api.core.ConflictException;
-import org.eclipse.che.api.core.ForbiddenException;
-import org.eclipse.che.api.core.NotFoundException;
-import org.eclipse.che.api.core.ServerException;
 import org.eclipse.che.commons.subject.Subject;
+import org.eclipse.che.multiuser.api.permission.server.AuthorizedSubject;
+import org.eclipse.che.multiuser.api.permission.server.PermissionChecker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,7 +61,7 @@ public class PermissionTokenHandler implements TokenHandler {
         new SsoClientPrincipal(
             principal.getToken(),
             principal.getClientUrl(),
-            new AuthorizedSubject(principal.getUser())));
+            new AuthorizedSubject(principal.getUser(), permissionChecker)));
   }
 
   @Override
@@ -80,61 +76,5 @@ public class PermissionTokenHandler implements TokenHandler {
       HttpServletRequest request, HttpServletResponse response, FilterChain chain)
       throws IOException, ServletException {
     delegate.handleMissingToken(request, response, chain);
-  }
-
-  private class AuthorizedSubject implements Subject {
-    private final Subject baseSubject;
-
-    public AuthorizedSubject(Subject baseSubject) {
-      this.baseSubject = baseSubject;
-    }
-
-    @Override
-    public String getUserName() {
-      return baseSubject.getUserName();
-    }
-
-    @Override
-    public boolean hasPermission(String domain, String instance, String action) {
-      try {
-        return permissionChecker.hasPermission(getUserId(), domain, instance, action);
-      } catch (NotFoundException nfe) {
-        return false;
-      } catch (ServerException | ConflictException e) {
-        LOG.error(
-            format(
-                "Can't check permissions for user '%s' and instance '%s' of domain '%s'",
-                getUserId(), domain, instance),
-            e);
-        throw new RuntimeException("Can't check user's permissions", e);
-      }
-    }
-
-    @Override
-    public void checkPermission(String domain, String instance, String action)
-        throws ForbiddenException {
-      if (!hasPermission(domain, instance, action)) {
-        String message = "User is not authorized to perform " + action + " of " + domain;
-        if (instance != null) {
-          message += " with id '" + instance + "'";
-        }
-        throw new ForbiddenException(message);
-      }
-    }
-
-    @Override
-    public String getToken() {
-      return baseSubject.getToken();
-    }
-
-    @Override
-    public String getUserId() {
-      return baseSubject.getUserId();
-    }
-
-    @Override
-    public boolean isTemporary() {
-      return baseSubject.isTemporary();
-    }
   }
 }

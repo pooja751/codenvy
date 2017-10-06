@@ -11,7 +11,6 @@
 package com.codenvy.spi.invite.tck.jpa;
 
 import com.codenvy.api.invite.InviteImpl;
-import com.codenvy.organization.spi.impl.OrganizationImpl;
 import com.codenvy.spi.invite.InviteDao;
 import com.codenvy.spi.invite.jpa.JpaInviteDao;
 import com.google.inject.TypeLiteral;
@@ -36,6 +35,7 @@ import org.eclipse.che.core.db.DBInitializer;
 import org.eclipse.che.core.db.h2.jpa.eclipselink.H2ExceptionHandler;
 import org.eclipse.che.core.db.schema.SchemaInitializer;
 import org.eclipse.che.core.db.schema.impl.flyway.FlywaySchemaInitializer;
+import org.eclipse.che.multiuser.organization.spi.impl.OrganizationImpl;
 import org.h2.Driver;
 
 /** @author Sergii Leshchenko */
