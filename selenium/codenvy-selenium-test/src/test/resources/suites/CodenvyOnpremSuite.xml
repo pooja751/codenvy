@@ -64,42 +64,6 @@
                     <exclude name="renameNameWorkspaceTest"/>
                 </methods>
             </class>
-            <class name="org.eclipse.che.selenium.dashboard.stacks.CheckCodeigniterStackTest">
-                <methods>
-                    <!-- unstable -->
-                    <exclude name="checkCodeigniterStack"/>
-                </methods>
-            </class>
-            <class name="org.eclipse.che.selenium.dashboard.stacks.CheckExpressStackTest">
-                <methods>
-                    <!-- unstable -->
-                    <exclude name="checkExpressStack"/>
-                </methods>
-            </class>
-            <class name="org.eclipse.che.selenium.dashboard.stacks.CheckLaravelStackTest">
-                <methods>
-                    <!-- unstable -->
-                    <exclude name="checkLaravelStack"/>
-                </methods>
-            </class>
-            <class name="org.eclipse.che.selenium.dashboard.stacks.CheckRailsStackTest">
-                <methods>
-                    <!-- unstable -->
-                    <exclude name="checkRailsStack"/>
-                </methods>
-            </class>
-            <class name="org.eclipse.che.selenium.dashboard.stacks.CheckSwiftStackTest">
-                <methods>
-                    <!-- unstable -->
-                    <exclude name="checkSwiftStack"/>
-                </methods>
-            </class>
-            <class name="org.eclipse.che.selenium.dashboard.stacks.CheckSymfonyStackTest">
-                <methods>
-                    <!-- unstable -->
-                    <exclude name="checkExpressStack"/>
-                </methods>
-            </class>
             <class name="org.eclipse.che.selenium.debugger.ChangeVariableWithEvaluatingTest"/>
             <class name="org.eclipse.che.selenium.debugger.CheckBreakPointStateTest"/>
             <class name="org.eclipse.che.selenium.debugger.CppProjectDebuggingTest">
