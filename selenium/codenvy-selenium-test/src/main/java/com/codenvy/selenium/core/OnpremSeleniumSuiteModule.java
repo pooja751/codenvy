@@ -25,6 +25,7 @@ import com.codenvy.selenium.core.user.OnpremAdminTestUser;
 import com.codenvy.selenium.core.user.OnpremTestUserImpl;
 import com.codenvy.selenium.core.user.OnpremTestUserNamespaceResolver;
 import com.codenvy.selenium.core.workspace.OnpremTestWorkspaceUrlResolver;
+import com.codenvy.selenium.pageobject.PageObjectsInjectorImpl;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.assistedinject.FactoryModuleBuilder;
@@ -37,6 +38,7 @@ import org.eclipse.che.selenium.core.action.MacOSActionsFactory;
 import org.eclipse.che.selenium.core.client.*;
 import org.eclipse.che.selenium.core.configuration.SeleniumTestConfiguration;
 import org.eclipse.che.selenium.core.configuration.TestConfiguration;
+import org.eclipse.che.selenium.core.pageobject.PageObjectsInjector;
 import org.eclipse.che.selenium.core.provider.CheTestSvnPasswordProvider;
 import org.eclipse.che.selenium.core.provider.CheTestSvnRepo1Provider;
 import org.eclipse.che.selenium.core.provider.CheTestSvnRepo2Provider;
@@ -104,6 +106,7 @@ public class OnpremSeleniumSuiteModule extends AbstractModule {
             .build(TestUserFactory.class));
 
     bind(AdminTestUser.class).to(OnpremAdminTestUser.class);
+    bind(PageObjectsInjector.class).to(PageObjectsInjectorImpl.class);
   }
 
   @Provides
