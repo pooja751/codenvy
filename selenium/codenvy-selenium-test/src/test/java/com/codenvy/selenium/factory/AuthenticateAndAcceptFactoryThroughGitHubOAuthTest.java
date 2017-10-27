@@ -15,8 +15,8 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import org.eclipse.che.api.core.model.user.User;
 import org.eclipse.che.selenium.core.SeleniumWebDriver;
+import org.eclipse.che.selenium.core.client.TestGitHubServiceClient;
 import org.eclipse.che.selenium.core.client.TestUserServiceClient;
-import org.eclipse.che.selenium.core.client.TestWorkspaceServiceClient;
 import org.eclipse.che.selenium.core.client.TestWorkspaceServiceClientFactory;
 import org.eclipse.che.selenium.core.factory.FactoryTemplate;
 import org.eclipse.che.selenium.core.factory.TestFactory;
@@ -29,6 +29,8 @@ import org.eclipse.che.selenium.pageobject.Ide;
 import org.eclipse.che.selenium.pageobject.NotificationsPopupPanel;
 import org.eclipse.che.selenium.pageobject.Profile;
 import org.eclipse.che.selenium.pageobject.ProjectExplorer;
+import org.eclipse.che.selenium.pageobject.dashboard.DashboardWorkspace;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -56,6 +58,8 @@ public class AuthenticateAndAcceptFactoryThroughGitHubOAuthTest {
   @Inject private TestApiEndpointUrlProvider apiEndpointUrlProvider;
   @Inject private TestUserNamespaceResolver testUserNamespaceResolver;
   @Inject private TestWorkspaceServiceClientFactory testWorkspaceServiceClientFactory;
+  @Inject private DashboardWorkspace dashboardWorkspace;
+  @Inject private TestGitHubServiceClient testGitHubServiceClient;
 
   private TestFactory testFactory;
 
@@ -64,25 +68,19 @@ public class AuthenticateAndAcceptFactoryThroughGitHubOAuthTest {
     testFactory = testFactoryInitializer.fromTemplate(FactoryTemplate.MINIMAL).build();
   }
 
-  //  @AfterClass
-  // This method removes default user instead of github user.
-  // Need to be reworked https://github.com/codenvy/codenvy/issues/2471
+  @AfterClass
   public void tearDown() throws Exception {
-    User user = testUserServiceClient.findByEmail(testUser.getEmail());
-    TestWorkspaceServiceClient workspaceServiceClient =
-        testWorkspaceServiceClientFactory.create(testUser.getEmail(), testUser.getPassword());
-    workspaceServiceClient
-        .getAll()
-        .forEach(
-            ws -> {
-              try {
-                workspaceServiceClient.delete(ws, user.getName());
-              } catch (Exception e) {
-                throw new RuntimeException(e);
-              }
-            });
+    seleniumWebDriver.get(dashboardWorkspace.getDashboardWorkspaceUrl());
+    dashboardWorkspace.waitToolbarTitleName("Workspaces");
+    dashboardWorkspace.waitListWorkspacesOnDashboard();
 
-    testUserServiceClient.remove(testUserServiceClient.findByEmail(testUser.getEmail()).getId());
+    String userGitHubEmail =
+        testGitHubServiceClient.getUserPublicPrimaryEmail(gitHubUsername, gitHubPassword);
+
+    dashboardWorkspace.deleteAllWorkspaces();
+
+    User user = testUserServiceClient.findByEmail(userGitHubEmail);
+    testUserServiceClient.remove(user.getId());
     testFactory.delete();
   }
 
