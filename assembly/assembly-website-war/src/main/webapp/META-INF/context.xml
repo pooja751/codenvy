@@ -10,13 +10,11 @@
       Red Hat, Inc. - initial API and implementation
 
 -->
-<Context path="/api" docBase="api" >
-    <ResourceLink global="jdbc/codenvy" name="jdbc/codenvy" type="javax.sql.DataSource"/>
-
-    <JarScanner>
-        <JarScanFilter
-          defaultPluggabilityScan="false"
-          defaultTldScan="false"
-          pluggabilityScan=""></JarScanFilter>
-    </JarScanner>
+<Context>
+  <JarScanner>
+    <JarScanFilter
+      defaultPluggabilityScan="false"
+      defaultTldScan="false"
+      pluggabilityScan=""></JarScanFilter>
+  </JarScanner>
 </Context>
