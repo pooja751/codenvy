@@ -63,7 +63,7 @@
                     <exclude name="renameNameWorkspaceTest"/>
                 </methods>
             </class>
-            <class name="org.eclipse.che.selenium.dashboard.WorkspaceDetailsTest"/>
+            <class name="com.codenvy.selenium.dashboard.CodenvyWorkspaceDetailsTest"/>
             <class name="org.eclipse.che.selenium.debugger.ChangeVariableWithEvaluatingTest"/>
             <class name="org.eclipse.che.selenium.debugger.CheckBreakPointStateTest"/>
             <class name="org.eclipse.che.selenium.debugger.CppProjectDebuggingTest">
