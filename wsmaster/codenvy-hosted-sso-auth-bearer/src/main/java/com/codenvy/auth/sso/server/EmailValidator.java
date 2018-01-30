@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.mail.internet.AddressException;
@@ -44,10 +45,17 @@ public class EmailValidator {
   private static final Logger LOG = LoggerFactory.getLogger(EmailValidator.class);
 
   private static final String EMAIL_BLACKLIST_FILE = "emailvalidator.blacklistfile";
+  private static final Pattern EMAIL_ILLEGAL_CHARACTERS_PATTERN =
+      Pattern.compile("(?:\\+|/|\\.\\.)");
 
   private final String blacklistPath;
 
-  private Set<String> emailBlackList = Collections.emptySet();
+  private Set<String> blacklist = Collections.emptySet();
+  private Set<String> blacklistGmail = Collections.emptySet();
+  private Set<String> blacklistPartial = Collections.emptySet();
+  private Set<Pattern> blacklistRegexp = Collections.emptySet();
+
+  private long emailBlackListFileDate;
 
   @Inject
   public EmailValidator(@Nullable @Named(EMAIL_BLACKLIST_FILE) String emailBlacklistFile) {
@@ -63,7 +71,7 @@ public class EmailValidator {
 
   /**
    * Reads set of forbidden words from file. One word by line. If file not found file reading
-   * failed, then throws exception.
+   * failed, then logs error.
    *
    * @return set with forbidden words
    * @throws java.io.FileNotFoundException
@@ -74,32 +82,52 @@ public class EmailValidator {
     if (blacklistPath == null) {
       return;
     }
-    InputStream blacklistStream;
     File blacklistFile = new File(blacklistPath);
-    if (blacklistFile.exists() && blacklistFile.isFile()) {
-      blacklistStream = new FileInputStream(blacklistFile);
-    } else {
-      blacklistStream =
-          Thread.currentThread().getContextClassLoader().getResourceAsStream(blacklistPath);
-      if (blacklistStream == null) {
-        throw new FileNotFoundException("Blacklist file " + blacklistPath + " not found!");
-      }
-    }
+    if (blacklistFile.exists()) {
+      if (blacklistFile.lastModified() != emailBlackListFileDate) {
+        try (InputStream is = new FileInputStream(blacklistFile)) {
+          Set<String> blackList = new HashSet<>();
+          Set<String> partialBlackList = new HashSet<>();
+          Set<String> gmailBlackList = new HashSet<>();
+          Set<Pattern> regexpList = new HashSet<>();
 
-    try (InputStream is = blacklistStream) {
-      Set<String> blacklist = new HashSet<>();
-      try (Scanner in = new Scanner(is)) {
-        while (in.hasNextLine()) {
-          blacklist.add(in.nextLine().trim());
+          try (Scanner in = new Scanner(is)) {
+            while (in.hasNextLine()) {
+              String line = in.nextLine().trim();
+              if (line.startsWith("regexp:")) {
+                regexpList.add(Pattern.compile(line.split("^regexp:", 2)[1]));
+              } else if (line.startsWith("*")) {
+                partialBlackList.add(line.substring(1).toLowerCase());
+              } else if (isGmailAddress(line.toLowerCase())) {
+                gmailBlackList.add(getGmailNormalizedLocalPart(line.toLowerCase()));
+              } else {
+                blackList.add(line.toLowerCase());
+              }
+            }
+          }
+          this.blacklist = blackList;
+          this.blacklistPartial = partialBlackList;
+          this.blacklistGmail = gmailBlackList;
+          this.blacklistRegexp = regexpList;
+
+          this.emailBlackListFileDate = blacklistFile.lastModified();
         }
       }
-      this.emailBlackList = blacklist;
+    } else {
+      LOG.error("Couldn't read from blacklist: File {} does not exist", blacklistPath);
     }
   }
 
   public void validateUserMail(String userMail) throws BadRequestException {
     if (userMail == null || userMail.isEmpty()) {
       throw new BadRequestException("User mail can't be null or ''");
+    }
+
+    userMail = userMail.toLowerCase();
+
+    if (EMAIL_ILLEGAL_CHARACTERS_PATTERN.matcher(userMail).find()) {
+      throw new BadRequestException(
+          "User mail must not contain characters like '+','/'or consecutive periods");
     }
 
     try {
@@ -110,12 +138,30 @@ public class EmailValidator {
           "E-Mail validation failed. Please check the format of your e-mail address.");
     }
 
-    // Check blacklist
-    for (String current : emailBlackList) {
-      if ((current.startsWith("*") && userMail.endsWith(current.substring(1)))
-          || userMail.equals(current)) {
-        throw new BadRequestException("User mail " + userMail + " is forbidden.");
+    if (blacklist.contains(userMail)) {
+      throw new BadRequestException(String.format("User mail %s is forbidden", userMail));
+    }
+    if (isGmailAddress(userMail)
+        && blacklistGmail.contains(getGmailNormalizedLocalPart(userMail))) {
+      throw new BadRequestException(String.format("User mail %s is forbidden", userMail));
+    }
+    for (String blacklistedPartialEmail : blacklistPartial) {
+      if (userMail.endsWith(blacklistedPartialEmail)) {
+        throw new BadRequestException(String.format("User mail %s is forbidden", userMail));
       }
     }
+    for (Pattern blackListRegexp : blacklistRegexp) {
+      if (blackListRegexp.matcher(userMail).find()) {
+        throw new BadRequestException(String.format("User mail %s is forbidden", userMail));
+      }
+    }
+  }
+
+  private boolean isGmailAddress(String mail) {
+    return mail.endsWith("@gmail.com") || mail.endsWith("@googlemail.com");
+  }
+
+  private String getGmailNormalizedLocalPart(String email) {
+    return email.split("@")[0].replace(".", "");
   }
 }
